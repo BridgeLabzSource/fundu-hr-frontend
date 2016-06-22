@@ -1,0 +1,25 @@
+<div class="col-sm-1"></div>
+<div class="col-sm-10">
+    <div class="row">
+        <form class="atd1" ng-controller="attendanceCtrl" ng-submit="submitData()">
+            <!-- <center> -->
+            <div class="col-sm-1"></div>
+            <div class="col-sm-11">
+
+                <div ng-class=" {'active': isActive}">
+                    <!--<div class="col-sm-1"></div>-->
+                    <!--<auto-manager autocomplete="allData"></auto-manager>-->
+                    <div class="col-sm-10">
+                        <input list="list" class="awesomplete form-control input-lg" id="inputlg" type="text" ng-model="newValue"
+                               auto-manager>
+                        <datalist id="list">
+                            <option ng-repeat="d in $root.data" value="{{d}}"></option>
+                        </datalist>
+                        <!--<br><strong><p>{{$root.data}}</p></strong>-->
+                        <br><strong><p id="selected" style="color:deeppink">{{newValue}}</p></strong>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

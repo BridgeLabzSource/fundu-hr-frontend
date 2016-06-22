@@ -1,0 +1,111 @@
+body {
+    background-image: url('../images/wall1.jpeg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: block;
+    padding: 0 !important;
+    margin: 0;
+
+}
+
+.center {
+    width: 400px;
+    padding: 25px;
+    /*border: 3px solid ;*/
+    margin: 25px;
+    margin: auto;
+    margin-top: -80px;
+
+}
+
+.btn {
+    border: 0px solid transparent;
+}
+
+.login input {
+
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 2px;
+    border-color: #FFFFFF;
+    color: #000000;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top: 10px;
+    background-position: center;
+}
+
+.logo {
+    display: block;
+    margin: auto;
+}
+
+#log {
+    background-color: #000000;
+    border: 0px solid black;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    padding-bottom: 50px;
+}
+
+.otp input {
+
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 2px;
+    border-color: #FFFFFF;
+    color: #000000;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    margin-top:10px;
+    background-position: center;
+}
+
+.form-otp {
+    background-color: #000000;
+    border: 0px solid black;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: rgba(0, 0, 0, 0.5);
+    padding-bottom: 50px;
+}
+
+.active {
+    display: block;
+    margin-top: 400px;
+}
+/*.active:hover{*/
+    /*top : 100px;*/
+/*}*/
+
+.moveUp{
+    display: block;
+    margin-top: 100px;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    top: 100px;
+
+}
+.send{
+    padding: 13px;
+}
+table {
+    color: white;
+}
+.txt{
+    color: white;
+    font-size: large;
+    padding: 25px;
+}
+
+#selected{
+    color:white;
+    align-content: center;
+    font-size: xx-large;
+}
