@@ -4,7 +4,7 @@ var express = require('express')
     ,bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
-app.use(express.static('../app'));
+app.use(express.static('./app'));
 
 app.use('/',function(req,res){
     console.log(req.url);
