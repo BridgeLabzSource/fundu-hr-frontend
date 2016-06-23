@@ -4,7 +4,8 @@
   "description": "Attendance app",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "bower install -F;"
     },
   "dependencies": {
     "body-parser": "^1.15.0",
