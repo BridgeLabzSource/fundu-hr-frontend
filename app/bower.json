@@ -4,12 +4,13 @@
   "description": "",
   "dependencies": {
     "angular-deferred-bootstrap": "~0.1.5",
-    "angular-mocks": "latest",
     "angular": "latest",
     "angular-ui-router": "~0.2.13",
-    "jquery": "1.9.1 - 2",
-    "bootstrap":"latest"
+    "jquery": "~2.1.1",
+    "bootstrap":"~3.0.0",
+    "satellizer":"latest"
   },
+  "main": "index.html",
   "ignore": [
     "**/.*",
     "bower_components",
