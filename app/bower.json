@@ -10,10 +10,7 @@
     "angular-toastr": "^1.7.0",
     "jquery": "1.9.1 - 2",
     "bootstrap":"latest",
-<<<<<<< HEAD
     "angular-local-storage": "^0.2.7",
-=======
->>>>>>> 46b5ff11089ebefa6c8fa8e7cc7c0dabacc735de
     "angular-cache": "^4.5.0"
   },
   "ignore": [
