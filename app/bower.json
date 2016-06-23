@@ -1,21 +1,25 @@
 {
-  "name": "Attendance-frontend",
-  "version": "1.0.0",
+  "name": "Attendance-App",
+  "main": "app.js",
+  "homepage": "https://github.com/BridgeLabzSource/fundu-hr-frontend",
+  "authors": [
+    "pranalipatil209 <pranalipatil209@gmail.com>"
+  ],
   "description": "",
-  "dependencies": {
-    "angular-deferred-bootstrap": "~0.1.5",
-    "angular": "latest",
-    "angular-ui-router": "~0.2.13",
-    "jquery": "~2.1.1",
-    "bootstrap":"~3.0.0",
-    "satellizer":"latest"
-  },
-  "main": "index.html",
+  "moduleType": [],
+  "license": "MIT",
   "ignore": [
     "**/.*",
+    "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-ui-router": "^0.3.1",
+    "bootstrap": "^3.3.6",
+    "satellizer": "^0.14.1",
+    "jquery": "^2.2.4"
+  }
 }
-
