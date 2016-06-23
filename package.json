@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "app/bower install"
+    "postinstall": "app/bower_components/bower install"
     },
   "dependencies": {
     "body-parser": "^1.15.0",
