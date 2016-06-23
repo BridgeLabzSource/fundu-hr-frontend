@@ -1,21 +1,17 @@
 {
-  "name": "angularApp",
-  "version": "0.0.0",
+  "name": "Attendance-frontend",
+  "version": "1.0.0",
   "description": "",
   "dependencies": {
     "angular-deferred-bootstrap": "~0.1.5",
     "angular-mocks": "latest",
     "angular": "latest",
     "angular-ui-router": "~0.2.13",
-    "angular-toastr": "^1.7.0",
     "jquery": "1.9.1 - 2",
-    "bootstrap":"latest",
-    "angular-local-storage": "^0.2.7",
-    "angular-cache": "^4.5.0"
+    "bootstrap":"latest"
   },
   "ignore": [
     "**/.*",
-    "node_modules",
     "bower_components",
     "test",
     "tests"
