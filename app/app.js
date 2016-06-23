@@ -20,8 +20,8 @@ angular.module('attendanceApp', ['ui.router'])
                 templateUrl: 'pages/attendance.html',
                 controller: 'attendanceCtrl'
             })
-            .state('Records', {
-                url: '/Records',
-                templateUrl: 'pages/record.html'
+            .state('Attendance.log', {
+                url: '/log',
+                templateUrl: 'pages/table.html'
             })
     });
