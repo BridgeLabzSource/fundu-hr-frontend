@@ -1,6 +1,5 @@
 angular.module('attendanceApp', ['ui.router'])
     .config(function($stateProvider, $urlRouterProvider) {
-
         $urlRouterProvider.otherwise('/Login');
 
         $stateProvider
@@ -8,7 +7,7 @@ angular.module('attendanceApp', ['ui.router'])
                 url: '/Login',
                 templateUrl: 'pages/login.html',
                 onEnter : function() {
-                    console.log('login');
+                    console.log('loginy');
                 }
             })
             .state('OTP', {
