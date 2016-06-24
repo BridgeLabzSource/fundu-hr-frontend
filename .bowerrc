@@ -1,12 +1,9 @@
 {
-  "cwd": "~/fundu-hr-frontend",
   "directory": "app/bower_components",
-  "storage": {
-    "packages": ".bower-cache",
-    "registry": ".bower-registry"
-  },
-  "tmp": ".bower-tmp",
-  "scripts": {
-    "postinstall": "bower install"
+  "timeout": 120000,
+  "registry": {
+    "search": [
+      "https://bower.herokuapp.com"
+    ]
   }
 }

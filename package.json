@@ -3,16 +3,22 @@
   "version": "1.0.0",
   "description": "Attendance app",
   "main": "index.js",
-  "cacheDirectories": ["node_modules", "bower_components" ],
+  "cacheDirectories": [
+    "node_modules",
+    "bower_components"
+  ],
   "scripts": {
     "start": "node index.js",
-    "postinstall" : "./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower --allow-root install"
   },
   "dependencies": {
-    "bower": "0.9.2",
     "body-parser": "^1.15.0",
+    "bower": "^1.7.9",
+    "ejs": "^2.4.2",
     "express": "^4.13.4",
-    "mongoose": "^4.4.10",
-    "ejs": "^2.4.2"
+    "mongoose": "^4.4.10"
+  },
+  "config": {
+    "unsafe-perm": true
   }
 }
