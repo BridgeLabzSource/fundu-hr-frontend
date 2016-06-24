@@ -10,14 +10,17 @@
                     <!--<div class="col-sm-1"></div>-->
                     <!--<auto-manager autocomplete="allData"></auto-manager>-->
                     <div class="col-sm-10">
-                        <input list="list" ui-sref=".log" class="awesomplete form-control input-lg" id="inputlg" type="text" ng-model="newValue"
+                        <input list="list" class="awesomplete form-control input-lg" id="inputlg" type="text" ng-model="name"
                                auto-manager>
                         <datalist id="list">
                             <option ng-repeat="d in $root.data" value="{{d}}"></option>
                         </datalist>
+                        <button class="logButton" ng-click="showLo()"></button>
                         <!--<br><strong><p>{{$root.data}}</p></strong>-->
-                        <br><strong><p id="selected" style="color:deeppink">{{newValue}}</p></strong><br><br>
-                        <div ui-view></div>
+                        <br><strong><p id="selected" style="color:deeppink"></p></strong><br><br>
+                        <div ng-hide="showLog">
+                            <div ng-include="'/pages/table.html'"></div>
+                        </div>
                     </div>
                 </div>
             </div>
