@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "bower install"
+    "postinstall" : "./node_modules/bower/bin/bower install"
   },
   "dependencies": {
     "bower": "0.9.2",
