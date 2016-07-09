@@ -11,7 +11,7 @@
             <br>
             </div>
             <p ng-show="otp.Otp_Id.$invalid " class="help-block">OTP is not valid!!</p>
-            <button class="btn btn-lg btn-success btn-block" ng-disabled="otp.$invalid" ng-click="verify()">Submit</button>
+            <button class="btn btn-lg btn-success btn-block" ng-click="verifyOT()" ng-disabled="otp.$invalid">Submit</button>
         </div>
     </center>
 </form>

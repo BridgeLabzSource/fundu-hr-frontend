@@ -14,7 +14,7 @@ angular.module('attendanceApp', ['ui.router'])
             .state('OTP', {
                 url: '/OTP',
                 templateUrl: 'pages/otp.html',
-                controller: 'loginCtrl',
+                controller: 'otpCtrl',
                 onEnter : function() {
                     console.log('OTP verification');
                 }
