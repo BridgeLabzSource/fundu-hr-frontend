@@ -7,12 +7,11 @@
         <div class="otp">
             <h2 class="form-signin-heading" style="top:4.7em;">Verification</h2>
             <div class="form-group" ng-class="{ 'has-error' : otp.Otp_Id.$invalid }">
-            <label for="Otp-Id" class="sr-only">Mobile</label>
-            <input id="Otp-Id" name="Otp_Id" class="form-control" placeholder="Enter OTP" ng-model="otp_val" required autofocus>
+                <input id="Otp-Id" name="Otp_Id" class="form-control" placeholder="Enter OTP" ng-model="otp" required autofocus />
             <br>
-                <p ng-show="otp.Otp_Id.$invalid " class="help-block">OTP is not valid!!</p>
             </div>
-            <button class="btn btn-lg btn-success btn-block" ui-sref="Attendance" ng-disabled="otp.$invalid" type="submit">Submit</button>
+            <p ng-show="otp.Otp_Id.$invalid " class="help-block">OTP is not valid!!</p>
+            <button class="btn btn-lg btn-success btn-block" ng-disabled="otp.$invalid" ng-click="verify()">Submit</button>
         </div>
     </center>
 </form>

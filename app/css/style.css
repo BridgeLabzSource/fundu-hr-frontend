@@ -38,6 +38,11 @@ body {
     background-position: center;
 }
 
+.input-group-addon
+{
+    background-color:#FFF;
+}
+
 .logo {
     display: block;
     margin: auto;
