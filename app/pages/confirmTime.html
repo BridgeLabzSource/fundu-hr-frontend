@@ -1,0 +1,42 @@
+<div>
+    <form class="timeEnt">
+        <fieldset>
+            <legend><h4>Time Entry</h4></legend>
+            <div class="table-responsive" align="center">
+                <table cellspacing="50px">
+                    <tbody>
+                    <tr>
+                        <td>
+                            <label>DATE</label>
+                        </td>
+                        <td>
+                            <input class="date1" id="date1" type="date" ng-model="date1"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>IN</label>
+                        </td>
+                        <td>
+                            <input class="inTime" id="inTime" type="time" ng-model="inTime"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>OUT</label>
+                        </td>
+                        <td>
+                            <input class="outTime" id="outTime" type="time" ng-model="outTime">
+                        </td>
+                    </tr>
+                    <tr align="center">
+                        <td colspan="2">
+                            <button class="btn btn-lg btn-default btn-block" ng-click="confirmTime()">Confirm</button>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </fieldset>
+    </form>
+</div>

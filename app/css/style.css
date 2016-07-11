@@ -128,3 +128,21 @@ table {
     background-color: transparent;
     border: transparent;
 }
+
+.timeEnt{
+
+    background-color: #000000;
+    border: 0px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    color: #000000;
+    background: rgba(0, 0, 0, 0.3);
+    padding-bottom: 50px;
+
+}
+legend{
+    color : white;
+}
+#timeTable{
+    cellpadding:30px;
+}

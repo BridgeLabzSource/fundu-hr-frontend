@@ -1,7 +1,6 @@
-angular.module('attendanceApp', ['ui.router'])
+angular.module('attendanceApp', ['ui.router','LocalStorageModule'])
     .config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('/Login');
-
         $stateProvider
             .state('Login', {
                 url: '/Login',
@@ -22,10 +21,17 @@ angular.module('attendanceApp', ['ui.router'])
             .state('Attendance', {
                 url: '/Attendance',
                 templateUrl: 'pages/attendance.html',
-                controller: 'attendanceCtrl'
+                controller: 'attendanceCtrl',
+                onEnter : function() {
+                    console.log('Time Entry Message');
+                }
             })
-            .state('Attendance.log', {
-                url: '/log',
-                templateUrl: 'pages/table.html'
+            .state('Attendance.timeEntry', {
+                url: '/time_entry',
+                templateUrl: 'pages/confirmTime.html',
+                controller: 'timeConfirmCtrl',
+                onEnter : function() {
+                    console.log('Time entry confirmation');
+                }
             })
     });
