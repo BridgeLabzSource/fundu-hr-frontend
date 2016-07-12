@@ -5,7 +5,7 @@ function DateTime() {
         if (dateTime == 0) {
             return 0;
         } else {
-            var inDateTime = dateTime.split("T");
+            var inDateTime = dateTime.split(" ");
             console.log(inDateTime);
             console.log("Date "+inDateTime[0]);
             // $scope.date1 = $scope.inDateTime[0];
@@ -17,10 +17,10 @@ function DateTime() {
         if (dateTime == 0) {
             return 0;
         } else {
-            var inDateTime = dateTime.split("T");
+            var inDateTime = dateTime.split(" ");
             console.log(inDateTime);
             console.log(inDateTime[1]);
-            var timeStr = inDateTime[1].split(".");
+            var timeStr = inDateTime[1];
             // $scope.date1 = $scope.inDateTime[0];
             console.log(timeStr);
             var time = timeStr[0];
@@ -55,7 +55,7 @@ function DateTime() {
             var finalTime = sHours + ":" + sMinutes+":"+sSeconds;
 
             //String to send server with date & time
-            var finalStr = date + "T" + finalTime + ".000+05:30";
+            var finalStr = date + " " + finalTime;
             console.log('finalstr - '+finalStr);
             return finalStr;
         }

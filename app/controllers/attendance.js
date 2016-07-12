@@ -29,8 +29,6 @@ angular.module('attendanceApp').controller('attendanceCtrl', ['$scope', '$timeou
                 $scope.loading = false;
                 alert('Sorry!! something went wrong....');
             });
-
-
             // if($scope.message.toLowerCase() == "log >"){
             //     $timeout(function() {
             //         $scope.showLog = false;
