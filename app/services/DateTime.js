@@ -23,7 +23,7 @@ function DateTime() {
             var timeStr = inDateTime[1];
             // $scope.date1 = $scope.inDateTime[0];
             console.log(timeStr);
-            var time = timeStr[0];
+            var time = timeStr;
             var time1 = time.toString().match(/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
             if (time1.length > 1) {
                 time1 = time1.slice(1);
