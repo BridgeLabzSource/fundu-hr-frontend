@@ -103,7 +103,7 @@ body {
     padding: 13px;
 }
 table {
-    color: white;
+    color: black;
 }
 .txt{
     color: white;
@@ -129,8 +129,7 @@ table {
     border: transparent;
 }
 
-.timeEnt{
-
+.timeEntr {
     background-color: #000000;
     border: 0px solid black;
     border-radius: 10px;
@@ -138,11 +137,17 @@ table {
     color: #000000;
     background: rgba(0, 0, 0, 0.3);
     padding-bottom: 50px;
-
+}
+label{
+    color : white;
 }
 legend{
     color : white;
 }
 #timeTable{
     cellpadding:30px;
+}
+td,th {
+    padding:0 15px 0 15px;
+    padding-bottom: 1em;
 }
