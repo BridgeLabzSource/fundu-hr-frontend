@@ -2,7 +2,7 @@ angular.module('attendanceApp').directive('autoManager', function () {
     var options = {
         'up_class': 'moveUp'
     };
-    var dict = ["apple maple", "boy", "cat", "pranali", "sharz", "apolo", "ashes", "apop", "praju"];
+    var dict = ["I am in office now","I left from  office now"];
     var show = new Set();
     return {
         restrict: 'A',
@@ -11,7 +11,6 @@ angular.module('attendanceApp').directive('autoManager', function () {
         },
         controller: function ($rootScope, $scope) {
             $rootScope.data = dict;
-            console.log($rootScope);
         },
         link: function ($scope, element) {
             var input = '';
@@ -28,26 +27,24 @@ angular.module('attendanceApp').directive('autoManager', function () {
                 }
             });
             //search from array and returns matched values
-            // function search_input(str) {
-            //     console.log(str);
-            //     //var show = new Set();
-            //     for (var i = 0; i < dict.length; i++) {
-            //         for (var j = 0; j < str.length; j++) {
-            //             if (dict[i].toLowerCase().charAt(j) == str.toLowerCase().charAt(j))
-            //                 show.add(dict[i]);
-            //             else
-            //                 show.delete(dict[i]);
-            //         }
-            //
-            //     }
-            //     //console.log(show);
-            //     $scope.p = Array.from(show);
-            //     //for(var i = 0;i<show.length;i++){
-            //     //    p.push(setIter.next().value);
-            //     //}
-            //     console.log($scope.p);
-            //
-            // }
+            function search_input(str) {
+                console.log(str);
+                //var show = new Set();
+                for (var i = 0; i < dict.length; i++) {
+                    for (var j = 0; j < str.length; j++) {
+                        if (dict[i].toLowerCase().charAt(j) == str.toLowerCase().charAt(j))
+                            show.add(dict[i]);
+                        else
+                            show.delete(dict[i]);
+                    }
+
+                }
+                //console.log(show);
+                $scope.p = Array.from(show);
+                //for(var i = 0;i<show.length;i++){
+                //    p.push(setIter.next().value);
+                //}
+            }
         }
     };
 

@@ -49,5 +49,5 @@ function confirm($scope, $http, $state, localStorageService, DateTime) {
                 alert('Sorry!! something went wrong....');
             })
     };
-    localStorageService.clearAll();
+    // localStorageService.clearAll();
 }
