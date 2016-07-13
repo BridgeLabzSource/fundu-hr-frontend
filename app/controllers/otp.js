@@ -21,17 +21,4 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
             alert('Sorry!! something went wrong....');
         })
     };
-    //     otpService.postOtp(verifyData).then(function (response) {
-    //         console.log('inside otp controller');
-    //         console.log(verifyData);
-    //         if (response.data == 'seccessfully register...') {
-    //             alert('Welcome to BridgeLabz');
-    //             $state.go('Attendance')
-    //         } else {
-    //             $state.go('Login');
-    //             alert('Incorrect OTP');
-    //         }
-    //     });
-    // };
-
 });

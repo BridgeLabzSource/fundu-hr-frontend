@@ -7,7 +7,6 @@ angular.module('attendanceApp').controller('attendanceCtrl', ['$scope', '$timeou
                 mobile: localStorageService.get('mobile'),
                 message: $scope.message
             };
-            console.log($scope.message);
             var dataTime = timeEntryCredentials;
             $http.post('http://funduhr-backend.herokuapp.com/timeEntryMsg/', dataTime).success(function (response, status) {
                 console.log(dataTime);

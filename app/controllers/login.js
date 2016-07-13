@@ -23,18 +23,3 @@ function submit($scope,$state,$http,localStorageService){
         })
     };
 }
-// loginService.postMobile(data).then(function(response){
-//     console.log('inside login controller');
-//     console.log(data);
-//     if(response.error && status==200){
-//         alert('Number does not exist');
-//         $state.go('Login');
-//     }else if(response.data){
-//         console.log(response);
-//         console.log(response.data);
-//         $state.go('OTP')
-//     }else{
-//         alert('Sorry!! something went wrong....');
-//         console.log('Server Problem');
-//     }
-// });

@@ -28,8 +28,6 @@ angular.module('attendanceApp').directive('autoManager', function () {
             });
             //search from array and returns matched values
             function search_input(str) {
-                console.log(str);
-                //var show = new Set();
                 for (var i = 0; i < dict.length; i++) {
                     for (var j = 0; j < str.length; j++) {
                         if (dict[i].toLowerCase().charAt(j) == str.toLowerCase().charAt(j))
@@ -37,7 +35,6 @@ angular.module('attendanceApp').directive('autoManager', function () {
                         else
                             show.delete(dict[i]);
                     }
-
                 }
                 //console.log(show);
                 $scope.p = Array.from(show);
