@@ -55,7 +55,7 @@ function DateTime() {
             var finalTime = sHours + ":" + sMinutes+":"+sSeconds;
 
             //String to send server with date & time
-            var finalStr = date + " " + finalTime;
+            var finalStr = date + " " + finalTime+ " +05:30";
             console.log('finalstr - '+finalStr);
             return finalStr;
         }
