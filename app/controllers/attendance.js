@@ -1,19 +1,28 @@
-angular.module('attendanceApp').controller('attendanceCtrl', ['$scope', '$timeout', 'localStorageService', '$http', '$state',
-    function ($scope, $timeout, localStorageService, $http, $state) {
+angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
+
+    function submitAttnd($scope,localStorageService,$state,restService) {
+
         $scope.dataLoaded = false;
         $scope.isActive = true;
         $scope.showLog = true;
+
         $scope.submitMsg = function () {
+            $scope.dataLoaded = true;
+
             var timeEntryCredentials = {
                 mobile: localStorageService.get('mobile'),
                 message: $scope.message
             };
+
             var dataTime = timeEntryCredentials;
-            $scope.dataLoaded = true;
-            $http.post('http://funduhr-backend.herokuapp.com/timeEntryMsg/', dataTime).success(function (response, status) {
+
+            restService.postRequest('timeEntryMsg/',dataTime, null).success(function (response, status) {
+
                 $scope.dataLoaded = false;
                 console.log(dataTime);
+
                 if (response.data && status == 200) {
+
                     console.log(response);
                     console.log(response.data.userId);
                     alert('Message has been sent..');
@@ -23,13 +32,19 @@ angular.module('attendanceApp').controller('attendanceCtrl', ['$scope', '$timeou
                     localStorageService.set('outTime', response.data.outTime);
                     localStorageService.set('totalTime', response.data.totalTime);
                     $state.go('Attendance.timeEntry');
+
                 } else {
+
                     $state.go('Attendance');
                     alert('Invalid message! Please behave like a Human...');
+
                 }
+
             }).catch(function (response) {
+
                 $scope.dataLoaded = false;
                 alert('Sorry!! something went wrong....');
+
             });
             // if($scope.message.toLowerCase() == "log >"){
             //     $timeout(function() {
@@ -41,4 +56,4 @@ angular.module('attendanceApp').controller('attendanceCtrl', ['$scope', '$timeou
             //     }, 800);
             // }
         };
-    }]);
+    }
