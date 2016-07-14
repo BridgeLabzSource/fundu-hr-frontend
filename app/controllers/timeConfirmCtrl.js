@@ -42,6 +42,7 @@ function confirm($scope, $http, $state, localStorageService, DateTime) {
                 console.log(response);
                 console.log(response.data);
                 alert('Saved!!');
+                $state.go('succeed');
             }
         })
             .catch(function (response) {

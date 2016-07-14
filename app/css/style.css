@@ -151,3 +151,18 @@ td,th {
     padding:0 15px 0 15px;
     padding-bottom: 1em;
 }
+.inputMob{
+    position:relative;
+    color:black;
+}
+.inputMob span{
+    position: absolute;
+    transform: translate(0,-50%);
+    top:50%;
+    font-size: medium;
+    pointer-events:none;
+    margin-left:-170px;
+}
+.inputMob input{
+    text-indent:2em;
+}

@@ -34,4 +34,11 @@ angular.module('attendanceApp', ['ui.router','LocalStorageModule'])
                     console.log('Time entry confirmation');
                 }
             })
+            .state('succeed',{
+                url: '/succeed',
+                template: '<h1>Attendance has logged!!</h1>',
+                onEnter : function(){
+                    console.log('success')
+                }
+            })
     });

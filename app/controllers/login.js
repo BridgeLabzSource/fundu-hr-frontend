@@ -2,9 +2,9 @@ angular.module('attendanceApp').controller('loginCtrl',submit);
 function submit($scope,$state,$http,localStorageService){
     $scope.logIn = function(){
         var credentials = {
-            mobile: $scope.mobile
+            mobile: "+91"+$scope.mobile
         };
-        localStorageService.set('mobile', $scope.mobile);
+        localStorageService.set('mobile', credentials.mobile);
         console.log(localStorageService.get('mobile'));
         var data = credentials;
         $http.post('http://funduhr-backend.herokuapp.com/otp/',data).success(function(response,status){
