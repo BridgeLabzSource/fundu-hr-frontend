@@ -1,17 +1,20 @@
 <div class="logo center">
     <img src="images/logo-white.png">
 </div>
-<form class="form-otp center" name="otp">
+<form class="form-otp center" name="otp1" id="otp">
 
     <center>
         <div class="otp">
             <h2 class="form-signin-heading" style="top:4.7em;">Verification</h2>
             <div class="form-group" ng-class="{ 'has-error' : otp.Otp_Id.$invalid }">
-                <input id="Otp-Id" name="Otp_Id" class="form-control" placeholder="Enter OTP" ng-model="otp" required autofocus />
+                <input id="Otp-Id" name="Otp_Id" class="form-control" placeholder="Enter OTP" ng-model="otp" required autofocus/>
             <br>
             </div>
             <p ng-show="otp.Otp_Id.$invalid " class="help-block">OTP is not valid!!</p>
-            <button class="btn btn-lg btn-success btn-block" ng-click="verifyOT()" ng-disabled="otp.$invalid">Submit</button>
+            <button class="btn btn-lg btn-success btn-block" ng-click="verifyOT()" ng-disabled="otp.$invalid">Submit</button><br>
+            <p ng-show="dataLoaded">
+                <i><img src="images/spin.gif"></i>
+            </p>
         </div>
     </center>
 </form>

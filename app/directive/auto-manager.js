@@ -2,7 +2,7 @@ angular.module('attendanceApp').directive('autoManager', function () {
     var options = {
         'up_class': 'moveUp'
     };
-    var dict = ["I am in office now","I left from  office now"];
+    var dict = ["I am in office now","I left from office now"];
     var show = new Set();
     return {
         restrict: 'A',

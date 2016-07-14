@@ -1,5 +1,6 @@
 angular.module('attendanceApp').controller('attendanceCtrl', ['$scope', '$timeout', 'localStorageService', '$http', '$state',
     function ($scope, $timeout, localStorageService, $http, $state) {
+        $scope.dataLoaded = false;
         $scope.isActive = true;
         $scope.showLog = true;
         $scope.submitMsg = function () {
@@ -8,7 +9,9 @@ angular.module('attendanceApp').controller('attendanceCtrl', ['$scope', '$timeou
                 message: $scope.message
             };
             var dataTime = timeEntryCredentials;
+            $scope.dataLoaded = true;
             $http.post('http://funduhr-backend.herokuapp.com/timeEntryMsg/', dataTime).success(function (response, status) {
+                $scope.dataLoaded = false;
                 console.log(dataTime);
                 if (response.data && status == 200) {
                     console.log(response);
@@ -25,7 +28,7 @@ angular.module('attendanceApp').controller('attendanceCtrl', ['$scope', '$timeou
                     alert('Invalid message! Please behave like a Human...');
                 }
             }).catch(function (response) {
-                $scope.loading = false;
+                $scope.dataLoaded = false;
                 alert('Sorry!! something went wrong....');
             });
             // if($scope.message.toLowerCase() == "log >"){

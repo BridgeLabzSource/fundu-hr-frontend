@@ -36,7 +36,7 @@ angular.module('attendanceApp', ['ui.router','LocalStorageModule'])
             })
             .state('succeed',{
                 url: '/succeed',
-                template: '<h1>Attendance has logged!!</h1>',
+                templateUrl: 'pages/succeed.html',
                 onEnter : function(){
                     console.log('success')
                 }

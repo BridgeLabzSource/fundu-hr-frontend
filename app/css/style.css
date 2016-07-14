@@ -166,3 +166,12 @@ td,th {
 .inputMob input{
     text-indent:2em;
 }
+.succeed{
+    font-weight: bold;
+    color: #FFFFFF;
+    font-family: 'Exo', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 6px;
+    background-position: center;
+}

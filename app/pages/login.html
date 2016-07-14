@@ -7,9 +7,6 @@
             <h2 class="form-signin-heading" style="top:4.7em;">Log In</h2>
             <div class="form-group" ng-class="{ 'has-error' : log.mobile.$invalid }">
                 <label for="mobile" class="sr-only">Mobile</label>
-                <!--<div class="left-inner-addon">-->
-                    <!--<i>+91</i>-->
-                    <!--<span class="input-group-addon">+91</span>-->
                 <div class="inputMob">
                     <span class="mobileinput">+91</span>
                     <input id="mobile" name="mobile" class="form-control" placeholder="Mobile" ng-model="mobile" required autofocus>
@@ -17,7 +14,10 @@
                 <br>
                 <p ng-show="log.mobile.$invalid " class="help-block">Mobile is not valid!!</p>
             </div>
-            <button class="btn btn-lg btn-success btn-block" ng-click="logIn()" ng-disabled="log.$invalid">Login</button>
+            <button class="btn btn-lg btn-success btn-block" ng-click="logIn()" ng-disabled="log.$invalid">Login</button><br>
+            <p ng-show="dataLoaded">
+                <i><img src="images/spin.gif"></i>
+            </p>
         </div>
         </center>
 </form>

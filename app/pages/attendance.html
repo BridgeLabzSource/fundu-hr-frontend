@@ -19,7 +19,10 @@
                         <br><strong><p id="selected" style="color:deeppink"></p></strong><br><br>
                         <div ng-hide="showLog">
                             <div ng-include="'/pages/table.html'"></div>
-                        </div>
+                        </div><br>
+                        <p ng-show="dataLoaded">
+                            <i><img src="images/spin.gif"></i>
+                        </p>
                         <div>
                             <div ui-view></div>
                         </div>

@@ -1,5 +1,6 @@
 angular.module('attendanceApp').controller('timeConfirmCtrl', confirm);
 function confirm($scope, $http, $state, localStorageService, DateTime) {
+    $scope.dataLoaded = false;
     $scope.confirmAll = {
         userId: localStorageService.get('userId'),
         inTime: localStorageService.get('inTime'),
@@ -21,6 +22,7 @@ function confirm($scope, $http, $state, localStorageService, DateTime) {
     $scope.outTime = DateTime.getTime1($scope.confirmAll.outTime);
 
     $scope.confirmTime = function () {
+        $scope.dataLoaded = true;
         $scope.inTimeFinal = DateTime.setDateTime($scope.date1, $scope.inTime);
         console.log($scope.inTimeFinal);
         $scope.outTimeFinal = DateTime.setDateTime($scope.date1, $scope.outTime);
@@ -34,6 +36,7 @@ function confirm($scope, $http, $state, localStorageService, DateTime) {
         };
         var data = confirmAttdc;
         $http.post('http://funduhr-backend.herokuapp.com/timeEntryConform/', data).success(function (response, status) {
+            $scope.dataLoaded = false;
             console.log(data);
             if (response.error) {
                 alert('Please enter valid data....');
@@ -46,7 +49,7 @@ function confirm($scope, $http, $state, localStorageService, DateTime) {
             }
         })
             .catch(function (response) {
-                $scope.loading = false;
+                $scope.dataLoaded = true;
                 alert('Sorry!! something went wrong....');
             })
     };

@@ -1,4 +1,5 @@
 angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$http,localStorageService){
+    $scope.dataLoaded = false;
     $scope.verifyOT = function(){
         console.log(localStorageService.get('mobile'));
         var otpVerify = {
@@ -6,7 +7,11 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
             otp : $scope.otp
         };
         var verifyData = otpVerify;
+        $scope.dataLoaded = true;
+        $scope.otp.$invalid = true;
         $http.post('http://funduhr-backend.herokuapp.com/verify/',verifyData).success(function(response,status){
+            $scope.dataLoaded = false;
+            $scope.otp.$invalid = false;
             console.log(verifyData);
             if(response.data == 'seccessfully register...' && status==200){
                 console.log(response);
@@ -17,7 +22,8 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
                 alert('Incorrect OTP');
             }
         }).catch(function(response){
-            $scope.loading = false;
+            $scope.dataLoaded = false;
+            $scope.otp.$invalid = false;
             alert('Sorry!! something went wrong....');
         })
     };
