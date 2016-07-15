@@ -2,6 +2,7 @@ angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
 
     function submitAttnd($scope,localStorageService,$state,restService) {
 
+        var socket = io.connect('https://funduhr-backend.herokuapp.com');
         $scope.dataLoaded = false;
         $scope.isActive = true;
         $scope.showLog = true;
@@ -36,7 +37,7 @@ angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
                 } else {
 
                     $state.go('Attendance');
-                    alert('Invalid message! Please behave like a Human...');
+                    alert('Error!! Try again..');
 
                 }
 

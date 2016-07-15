@@ -1,6 +1,7 @@
 angular.module('attendanceApp').controller('loginCtrl',submit);
 
 function submit($scope,$state,$http,localStorageService,restService){
+    
     $scope.dataLoaded = false;
 
     $scope.logIn = function(){
