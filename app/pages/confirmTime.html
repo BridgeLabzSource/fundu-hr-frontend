@@ -29,10 +29,10 @@
                         </td>
 
                         <td >
-                            <button class="btn btn-lg btn-primary btn-block" ng-click="confirmTime()" ng-disabled="conf">Confirm</button>
-                            <p ng-show="dataLoaded">
-                                <i><img src="images/spin.gif"></i>
-                            </p>
+                            <button class="btn btn-lg btn-primary btn-block" ng-click="confirmTime()" ng-disabled="conf">
+                                <span ng-hide="dataLoaded">Confirm</span>
+                                <span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i><p class="k">Loading..</p></span>
+                            </button>
                         </td>
                     </tr>
                     </tbody>

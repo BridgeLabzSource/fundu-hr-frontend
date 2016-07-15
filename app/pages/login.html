@@ -14,10 +14,11 @@
                 <br>
                 <p ng-show="log.mobile.$invalid " class="help-block">Mobile is not valid!!</p>
             </div>
-            <button class="btn btn-lg btn-success btn-block" ng-click="logIn()" ng-disabled="log.$invalid">Login</button><br>
-            <p ng-show="dataLoaded">
-                <i><img src="images/spin.gif"></i>
-            </p>
+            <button class="btn btn-lg btn-success btn-block" ng-click="logIn()" ng-disabled="log.$invalid">
+                <span ng-hide="dataLoaded">Login</span>
+                <span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i>Loading...</span>
+            </button><br>
+
         </div>
         </center>
 </form>

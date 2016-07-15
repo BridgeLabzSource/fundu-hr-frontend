@@ -15,12 +15,12 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
 
         var verifyData = otpVerify;
         $scope.dataLoaded = true;
-        $scope.otp.$invalid = true;
+        $scope.otp2.$invalid = true;
 
         restService.postRequest('verify/',verifyData,null).success(function(response,status){
 
             $scope.dataLoaded = false;
-            $scope.otp.$invalid = false;
+            $scope.otp2.$invalid = false;
             console.log(verifyData);
 
             if(response.data == 'seccessfully register...' && status==200){
@@ -31,15 +31,15 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
 
             }else {
 
-                $state.go('Login');
                 alert('Incorrect OTP');
+                $state.go('Login');
 
             }
 
         }).catch(function(response){
 
             $scope.dataLoaded = false;
-            $scope.otp.$invalid = false;
+            $scope.otp2.$invalid = false;
             alert('Sorry!! something went wrong....');
 
         })

@@ -27,7 +27,7 @@ function submit($scope,$state,$http,localStorageService,restService){
                 $state.go('Login');
             }
             else {
-
+                
                 console.log(response);
                 console.log(response.data);
                 $state.go('OTP')

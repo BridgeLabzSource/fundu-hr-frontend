@@ -179,3 +179,7 @@ td,th {
 .atdDiv {
     margin: auto;
 }
+.k{
+    font-size: 15px;
+    transform: translate(0,25%);
+}
