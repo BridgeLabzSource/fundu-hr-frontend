@@ -6,7 +6,7 @@ function confirm($scope, restService, $state, localStorageService, DateTime) {
 
     $scope.confirmAll = {
 
-        userId: localStorageService.get('userId'),
+        mobile: localStorageService.get('userId'),
         inTime: localStorageService.get('inTime'),
         outTime: localStorageService.get('outTime'),
         totalTime: localStorageService.get('totalTime')
@@ -39,7 +39,7 @@ function confirm($scope, restService, $state, localStorageService, DateTime) {
         console.log($scope.outTimeFinal);
 
         var confirmAttdc = {
-            userId: $scope.confirmAll.userId,
+            mobile: $scope.confirmAll.mobile,
             inTime: $scope.inTimeFinal,
             outTime: $scope.outTimeFinal,
             totalTime: $scope.confirmAll.totalTime,
@@ -54,8 +54,8 @@ function confirm($scope, restService, $state, localStorageService, DateTime) {
             $scope.conf = false;
             console.log(data);
 
-            if (response.error) {
-                alert('Please enter valid data....');
+            if (response.err == "already update time") {
+                alert('Your attendance has already logged.');
                 $state.go('Attendance');
             } else {
 

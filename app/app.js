@@ -1,6 +1,7 @@
 angular.module('attendanceApp', ['ui.router','LocalStorageModule'])
-    .config(function($stateProvider, $urlRouterProvider) {
+    .config(function($stateProvider, $urlRouterProvider,$httpProvider) {
         $urlRouterProvider.otherwise('/Login');
+
         $stateProvider
             .state('Login', {
                 url: '/Login',
@@ -40,5 +41,6 @@ angular.module('attendanceApp', ['ui.router','LocalStorageModule'])
                 onEnter : function(){
                     console.log('success')
                 }
-            })
+            });
+        $httpProvider.interceptors.push('interceptorAt');
     });

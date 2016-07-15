@@ -5,7 +5,7 @@ function restService($http){
     var baseUrl = "https://funduhr-backend.herokuapp.com";
 
     //getRequest function
-    this.getRequest = function (path,query){
+    this.getRequest = function (path,query){    
         console.log('In getRequest');
         var getR = $http.get(baseUrl+"/"+path,query);
         console.log(getR);
