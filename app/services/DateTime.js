@@ -67,13 +67,9 @@ function DateTime() {
             var time = time;
             var tt = time.split(':');
             var hours = tt[0];
-            console.log(tt[0]);
             var minutes = tt[1];
-            console.log(tt[1]);
             var sT = tt[2].split(' ');
             var seconds = sT[0];
-            console.log(sT[0]);
-            console.log(sT[1]);
             var AMPM = sT[1];
             if (AMPM == "PM" && hours < 12){ hours = Number(tt[0]) + 12;}
             if (AMPM == "AM" && hours == 12){ hours = Number(tt[0]) - 12;}

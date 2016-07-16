@@ -37,7 +37,7 @@ angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
                 } else {
 
                     $state.go('Attendance');
-                    alert('Error!! Try again..');
+                    alert('Time entry has already done!');
 
                 }
 
