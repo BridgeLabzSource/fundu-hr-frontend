@@ -43,13 +43,13 @@ function DateTime() {
             if (time1.length > 1) {
 
                 time1 = time1.slice(1);
-                time1[5] = +time1[0] < 12 ? 'AM' : 'PM';
+                time1[5] = +time1[0] < 12 ? ' AM' : ' PM';
                 time1[0] = +time1[0] % 12 || 12;
 
             }
 
-            console.log("Time "+time1.join(' '));
-            return time1.join(' ');
+            console.log("Time "+time1.join(''));
+            return time1.join('');
         }
     };
 
@@ -63,21 +63,28 @@ function DateTime() {
         else {
 
             //time is converted in 24 hour format
+            console.log('24 hour converter');
             var time = time;
-            var hours = Number(time.match(/^(\d+)/)[1]);
-            var minutes = Number(time.match(/:(\d+)/)[1]);
-            var seconds = Number(time.match(/:(\d+)/)[1]);
-            var AMPM = time.match(/\s(.*)$/)[1];
-            if (AMPM == "PM" && hours < 12) hours = hours + 12;
-            if (AMPM == "AM" && hours == 12) hours = hours - 12;
+            var tt = time.split(':');
+            var hours = tt[0];
+            console.log(tt[0]);
+            var minutes = tt[1];
+            console.log(tt[1]);
+            var sT = tt[2].split(' ');
+            var seconds = sT[0];
+            console.log(sT[0]);
+            console.log(sT[1]);
+            var AMPM = sT[1];
+            if (AMPM == "PM" && hours < 12){ hours = Number(tt[0]) + 12;}
+            if (AMPM == "AM" && hours == 12){ hours = Number(tt[0]) - 12;}
             var sHours = hours.toString();
             var sMinutes = minutes.toString();
             var sSeconds = seconds.toString();
             if (hours < 10) sHours = "0" + sHours;
-            if (minutes < 10) sMinutes = "0" + sMinutes;
-            if (seconds < 10) sSeconds = "0" + sSeconds;
-            var finalTime = sHours + ":" + sMinutes+":"+sSeconds;
-
+            // if (minutes < 10) sMinutes = "0" + sMinutes;
+            // if (seconds < 10) sSeconds = "0" + sSeconds;
+            var finalTime = sHours+":"+sMinutes+":"+sSeconds;
+            console.log('final time - '+finalTime);
             //String to send server with date & time
             var finalStr = date + " " + finalTime+ " +05:30";
             console.log('finalstr - '+finalStr);
