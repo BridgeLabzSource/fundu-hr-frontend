@@ -1,47 +1,36 @@
-angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$http,localStorageService,restService){
+angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$http,localStorageService,restService) {
 
     $scope.dataLoaded = false;
 
-    $scope.verifyOT = function(){
+    $scope.verifyOT = function () {
 
         console.log(localStorageService.get('mobile'));
 
         var otpVerify = {
 
             mobile: localStorageService.get('mobile'),
-            otp : $scope.otp
+            otp: $scope.otp
 
         };
 
-        var verifyData = otpVerify;
         $scope.dataLoaded = true;
         $scope.otp2.$invalid = true;
 
-        restService.postRequest('verify/',verifyData,null).success(function(response,status){
-
+        restService.postRequest('verify', otpVerify, cb);
+        function cb(data,error){
             $scope.dataLoaded = false;
             $scope.otp2.$invalid = false;
-            console.log(verifyData);
-
-            if(response.data == 'seccessfully register...' && status==200){
-
-                console.log(response);
+            console.log(data.data);
+            if (data) {
+                console.log(otpVerify);
                 alert('Welcome to BridgeLabz');
-                $state.go('Attendance');
+                $state.go('home');
 
-            }else {
-
+            } else {
                 alert('Incorrect OTP');
                 $state.go('Login');
 
             }
-
-        }).catch(function(response){
-
-            $scope.dataLoaded = false;
-            $scope.otp2.$invalid = false;
-            alert('Sorry!! something went wrong....');
-
-        })
+        }
     };
 });

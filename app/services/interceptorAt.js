@@ -5,7 +5,7 @@ function interceptorAt($q){
     return{
 
         request : function(config) {
-            console.log('request has sent..');
+            console.log('request has been sent..');
             return config || $q.when(config);
         },
 

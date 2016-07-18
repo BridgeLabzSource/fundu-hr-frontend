@@ -2,51 +2,48 @@ angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
 
     function submitAttnd($scope,localStorageService,$state,restService) {
 
-        var socket = io.connect('https://funduhr-backend.herokuapp.com');
         $scope.dataLoaded = false;
         $scope.isActive = true;
         $scope.showLog = true;
 
         $scope.submitMsg = function () {
+
             $scope.dataLoaded = true;
 
             var timeEntryCredentials = {
                 mobile: localStorageService.get('mobile'),
                 message: $scope.message
             };
-
             var dataTime = timeEntryCredentials;
 
-            restService.postRequest('timeEntryMsg/',dataTime, null).success(function (response, status) {
+            restService.postRequest('timeEntryMsg',dataTime, cb);
 
-                $scope.dataLoaded = false;
-                console.log(dataTime);
+                function cb(data,error) {
+                    $scope.dataLoaded = false;
 
-                if (response.data && status == 200) {
+                    if(data) {
+                        if (data.data) {
+                            console.log(data);
+                            console.log(data.userId);
+                            alert('Message has been sent..');
+                            $scope.message = '';
+                            localStorageService.set('userId', data.data.userId);
+                            localStorageService.set('inTime', data.data.inTime);
+                            localStorageService.set('outTime', data.data.outTime);
+                            localStorageService.set('totalTime', data.data.totalTime);
+                            $state.go('home.timeEntry');
 
-                    console.log(response);
-                    console.log(response.data.userId);
-                    alert('Message has been sent..');
-                    $scope.message = '';
-                    localStorageService.set('userId', response.data.userId);
-                    localStorageService.set('inTime', response.data.inTime);
-                    localStorageService.set('outTime', response.data.outTime);
-                    localStorageService.set('totalTime', response.data.totalTime);
-                    $state.go('Attendance.timeEntry');
+                        } else if (data.err == "You are already enter time ") {
 
-                } else {
+                            $state.go('home');
+                            alert('Time entry has already done!');
 
-                    $state.go('Attendance');
-                    alert('Time entry has already done!');
-
+                        }
+                    }
+                    else{
+                        alert('try again later!!');
+                    }
                 }
-
-            }).catch(function (response) {
-
-                $scope.dataLoaded = false;
-                alert('Sorry!! something went wrong....');
-
-            });
             // if($scope.message.toLowerCase() == "log >"){
             //     $timeout(function() {
             //         $scope.showLog = false;
@@ -56,5 +53,5 @@ angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
             //         $scope.showLog = true;
             //     }, 800);
             // }
-        };
+        }
     }

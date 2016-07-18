@@ -19,16 +19,16 @@ angular.module('attendanceApp', ['ui.router','LocalStorageModule'])
                     console.log('OTP verification');
                 }
             })
-            .state('Attendance', {
-                url: '/Attendance',
+            .state('home', {
+                url: '/home',
                 templateUrl: 'pages/attendance.html',
                 controller: 'attendanceCtrl',
                 onEnter : function() {
                     console.log('Time Entry Message');
                 }
             })
-            .state('Attendance.timeEntry', {
-                url: '/time_entry',
+            .state('home.timeEntry', {
+                url: '/',
                 templateUrl: 'pages/confirmTime.html',
                 controller: 'timeConfirmCtrl',
                 onEnter : function() {

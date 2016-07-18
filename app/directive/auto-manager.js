@@ -2,6 +2,14 @@ angular.module('attendanceApp').directive('autoManager', function () {
     var options = {
         'up_class': 'moveUp'
     };
+    var socket = io.connect('http://localhost:3000');
+    socket.emit('message',"auto");
+    socket.on('server ready', function(msg){
+        console.log('inside socket.on');
+        console.log(msg);
+        var List = msg;
+        console.log(List);
+    });
     var dict = ["I am in office now","I left from office now"];
     var show = new Set();
     return {
@@ -10,6 +18,7 @@ angular.module('attendanceApp').directive('autoManager', function () {
             list: '&'
         },
         controller: function ($rootScope, $scope) {
+
             $rootScope.data = dict;
         },
         link: function ($scope, element) {

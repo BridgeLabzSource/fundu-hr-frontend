@@ -1,4 +1,4 @@
-angular.module('attendanceApp').service('DateTime',DateTime);
+angular.module('attendanceApp').service('DateTime', DateTime);
 
 function DateTime() {
 
@@ -15,7 +15,7 @@ function DateTime() {
 
             var inDateTime = dateTime.split(" ");
             console.log(inDateTime);
-            console.log("Date "+inDateTime[0]);
+            console.log("Date " + inDateTime[0]);
             // $scope.date1 = $scope.inDateTime[0];
             var date1 = inDateTime[0];
             return date1;
@@ -48,12 +48,12 @@ function DateTime() {
 
             }
 
-            console.log("Time "+time1.join(''));
+            console.log("Time " + time1.join(''));
             return time1.join('');
         }
     };
 
-    this.setDateTime = function (date,time) {
+    this.setDateTime = function (date, time) {
 
         if (time == 0) {
 
@@ -71,21 +71,25 @@ function DateTime() {
             var sT = tt[2].split(' ');
             var seconds = sT[0];
             var AMPM = sT[1];
-            if (AMPM == "PM" && hours < 12){ hours = Number(tt[0]) + 12;}
-            if (AMPM == "AM" && hours == 12){ hours = Number(tt[0]) - 12;}
+            if (AMPM == "PM" && hours < 12) {
+                hours = Number(tt[0]) + 12;
+            }
+            if (AMPM == "AM" && hours == 12) {
+                hours = Number(tt[0]) - 12;
+            }
             var sHours = hours.toString();
             var sMinutes = minutes.toString();
             var sSeconds = seconds.toString();
             if (hours < 10) sHours = "0" + sHours;
             // if (minutes < 10) sMinutes = "0" + sMinutes;
             // if (seconds < 10) sSeconds = "0" + sSeconds;
-            var finalTime = sHours+":"+sMinutes+":"+sSeconds;
-            console.log('final time - '+finalTime);
+            var finalTime = sHours + ":" + sMinutes + ":" + sSeconds;
+            console.log('final time - ' + finalTime);
             //String to send server with date & time
-            var finalStr = date + " " + finalTime+ " +05:30";
-            console.log('finalstr - '+finalStr);
+            var finalStr = date + " " + finalTime + " +05:30";
+            console.log('finalstr - ' + finalStr);
             return finalStr;
-            
+
         }
     };
 }

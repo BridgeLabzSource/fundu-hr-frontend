@@ -46,30 +46,24 @@ function confirm($scope, restService, $state, localStorageService, DateTime) {
             check: "true"
         };
 
-        var data = confirmAttdc;
+        restService.postRequest('timeEntryConform', confirmAttdc, cb);
 
-        restService.postRequest('timeEntryConform/',data,null).success(function (response, status) {
-
+        function cb(data, error) {
             $scope.dataLoaded = false;
             $scope.conf = false;
             console.log(data);
 
-            if (response.err == "already update time") {
+            if (data.err == "already update time") {
                 alert('Your attendance has already logged.');
-                $state.go('Attendance');
+                $state.go('home');
             } else {
-
-                console.log(response);
-                console.log(response.data);
+                console.log(data);
+                console.log(data.data);
                 alert('Saved!!');
                 $state.go('succeed');
             }
-        })
-            .catch(function (response) {
-                $scope.dataLoaded = false;
-                $scope.conf = false;
-                alert('Sorry!! something went wrong....');
-            })
-    };
-    // localStorageService.clearAll();
+        }
+
+        // localStorageService.clearAll();
+    }
 }

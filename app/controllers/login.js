@@ -1,43 +1,36 @@
 angular.module('attendanceApp').controller('loginCtrl',submit);
 
-function submit($scope,$state,$http,localStorageService,restService){
-    
+function submit($scope,$state,$http,localStorageService,restService) {
+
     $scope.dataLoaded = false;
 
-    $scope.logIn = function(){
+    $scope.logIn = function () {
 
         var credentials = {
-            mobile: "+91"+$scope.mobile
+            mobile: "+91" + $scope.mobile
         };
 
         localStorageService.set('mobile', credentials.mobile);
         console.log(localStorageService.get('mobile'));
-        var data = credentials;
         $scope.dataLoaded = true;
         $scope.log.$invalid = true;
 
-        restService.postRequest('otp/',data,null).success(function(response,status){
-
+        function cb(data,error) {
             $scope.dataLoaded = false;
             $scope.log.$invalid = false;
-             console.log(data);
-
-            if(response.error){
-
-                alert('Number does not exist');
-                $state.go('Login');
+            console.log(data);
+            if(data != null) {
+                if (data.error) {
+                    alert('Number does not exist');
+                    $state.go('Login');
+                }
+                else {
+                    $state.go('OTP')
+                }
             }
-            else {
-                
-                console.log(response);
-                console.log(response.data);
-                $state.go('OTP')
-            }
-        })
-            .catch(function(response){
-            $scope.dataLoaded = false;
-            $scope.log.$invalid = false;
-            alert('Sorry!! something went wrong....');
-        })
-    };
+        }
+
+        restService.postRequest('otp', credentials, cb);
+
+    }
 }

@@ -16,7 +16,8 @@
     "bower": "^1.7.9",
     "ejs": "^2.4.2",
     "express": "^4.13.4",
-    "mongoose": "^4.4.10"
+    "mongoose": "^4.4.10",
+    "socket.io": "^1.4.8"
   },
   "config": {
     "unsafe-perm": true
