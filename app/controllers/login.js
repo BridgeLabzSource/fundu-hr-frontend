@@ -1,3 +1,4 @@
+/** login controller to post the mobile */
 angular.module('attendanceApp').controller('loginCtrl',submit);
 
 function submit($scope,$state,$http,localStorageService,restService) {
@@ -30,7 +31,7 @@ function submit($scope,$state,$http,localStorageService,restService) {
             }
         }
 
-        restService.postRequest('otp', credentials, cb);
+        restService.postRequest('sms/otp', credentials, cb);
 
     }
 }

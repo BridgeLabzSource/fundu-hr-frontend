@@ -8,9 +8,7 @@ function restService($http){
     //getRequest function
     this.getRequest = function (path,query,cb){
         console.log('In getRequest');
-        // var getR=$http.get(baseUrl + path,query,function(data,err){
-        //
-        // }
+
         var getR = $http.get(baseUrl + path,query).success(function(data){
             cb(data,null);
         }).error(function(err){
@@ -27,8 +25,6 @@ function restService($http){
             cb(data,null);
 
         }).error(function(err){
-            // $scope.dataLoaded = false;
-            // $scope.log.$invalid = false;
             alert('Sorry!! something went wrong....');
             cb(null,err);
         });

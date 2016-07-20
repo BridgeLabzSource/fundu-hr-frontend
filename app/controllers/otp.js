@@ -16,7 +16,7 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
         $scope.dataLoaded = true;
         $scope.otp2.$invalid = true;
 
-        restService.postRequest('verify', otpVerify, cb);
+        restService.postRequest('sms/verify', otpVerify, cb);
         function cb(data,error){
             $scope.dataLoaded = false;
             $scope.otp2.$invalid = false;

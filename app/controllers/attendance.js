@@ -1,6 +1,6 @@
 angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
 
-    function submitAttnd($scope,localStorageService,$state,restService) {
+    function submitAttnd($scope,localStorageService,$state,restService,retrieveService) {
 
         $scope.dataLoaded = false;
         $scope.isActive = true;
@@ -12,28 +12,24 @@ angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
 
             var timeEntryCredentials = {
                 mobile: localStorageService.get('mobile'),
-                message: $scope.message
+                message: $scope.message,
+                intent : 'attendance'
             };
             var dataTime = timeEntryCredentials;
-
-            restService.postRequest('timeEntryMsg',dataTime, cb);
+            console.log(dataTime);
+            restService.postRequest('message',dataTime, cb);
 
                 function cb(data,error) {
                     $scope.dataLoaded = false;
-
                     if(data) {
-                        if (data.data) {
+                        if (data.userId) {
                             console.log(data);
-                            console.log(data.userId);
                             alert('Message has been sent..');
                             $scope.message = '';
-                            localStorageService.set('userId', data.data.userId);
-                            localStorageService.set('inTime', data.data.inTime);
-                            localStorageService.set('outTime', data.data.outTime);
-                            localStorageService.set('totalTime', data.data.totalTime);
+                            retrieveService.setDatax(data);
                             $state.go('home.timeEntry');
-
-                        } else if (data.err == "You are already enter time ") {
+                        }
+                        else if (data.err == "You are already enter time ") {
 
                             $state.go('home');
                             alert('Time entry has already done!');
