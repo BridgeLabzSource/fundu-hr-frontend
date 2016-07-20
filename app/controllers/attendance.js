@@ -29,7 +29,7 @@ angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
                             retrieveService.setDatax(data);
                             $state.go('home.timeEntry');
                         }
-                        else if (data.err == "You are already enter time ") {
+                        else if (data == "You are already enter time ") {
 
                             $state.go('home');
                             alert('Time entry has already done!');
