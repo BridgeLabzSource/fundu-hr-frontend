@@ -9,7 +9,8 @@ function retrieveService(){
             return dataX;
         },
         setDatax : function(val){
-            dataX = val;
+            dataX = val.data;
+            console.log('dataXd',dataX);
         }
     }
 }

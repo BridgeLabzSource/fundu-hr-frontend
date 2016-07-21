@@ -7,9 +7,9 @@ angular.module('attendanceApp').directive('autoManager', function (localStorageS
     socket.on('server ready', function(msg){
         console.log('inside socket.on');
         console.log(msg);
-        localStorageService.set('dict', msg);
+        // localStorageService.set('dict', msg);
     });
-
+    // var dict = "The quick brown fox jumps over the lazy dog";
     var show = new Set();
     return {
         restrict: 'A',
@@ -29,8 +29,10 @@ angular.module('attendanceApp').directive('autoManager', function (localStorageS
                 $(element).parent().parent().addClass(options.up_class);
             });
             //takes the entered value on each keyup
+
             element.bind('keyup', function (event) {
                 var input = $(element).val().toString();
+                
                 // if (input.length >= 2) {
                 //     search_input(input);
                 // }
