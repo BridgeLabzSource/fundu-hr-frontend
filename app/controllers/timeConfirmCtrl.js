@@ -27,7 +27,7 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
         }
         return hide;
     };
-    
+
     $scope.date1 = DateTime.getDate1($scope.confirmAll.inTime);
     $scope.inTime = DateTime.getTime1($scope.confirmAll.inTime);
     $scope.outTime = DateTime.getTime1($scope.confirmAll.outTime);
@@ -37,9 +37,9 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
         $scope.dataLoaded = true;
         $scope.conf = true;
         $scope.inTimeFinal = DateTime.setDateTime($scope.date1, $scope.inTime);
-        console.log($scope.inTimeFinal);
+        // console.log($scope.inTimeFinal);
         $scope.outTimeFinal = DateTime.setDateTime($scope.date1, $scope.outTime);
-        console.log($scope.outTimeFinal);
+        // console.log($scope.outTimeFinal);
 
         var confirmAttdc = {
             mobile: $scope.confirmAll.mobile,
@@ -54,7 +54,7 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
         function cb(data, error) {
             $scope.dataLoaded = false;
             $scope.conf = false;
-            console.log(data);
+            // console.log(data);
 
             if (data.err == "already update time") {
                 alert('Your attendance has already logged.');

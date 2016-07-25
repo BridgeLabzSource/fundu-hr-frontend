@@ -4,7 +4,7 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
 
     $scope.verifyOT = function () {
 
-        console.log(localStorageService.get('mobile'));
+        // console.log(localStorageService.get('mobile'));
 
         var otpVerify = {
 
@@ -20,9 +20,9 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
         function cb(data,error){
             $scope.dataLoaded = false;
             $scope.otp2.$invalid = false;
-            console.log(data.data);
+            // console.log(data.data);
             if (data.data) {
-                console.log(otpVerify);
+                // console.log(otpVerify);
                 alert('Welcome to BridgeLabz');
                 $state.go('home');
 

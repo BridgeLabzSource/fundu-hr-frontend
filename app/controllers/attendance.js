@@ -15,14 +15,14 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
             message: $scope.message,
         };
         var dataTime = timeEntryCredentials;
-        console.log(dataTime);
+        // console.log(dataTime);
         restService.postRequest('message', dataTime, cb);
 
         function cb(data, error) {
             $scope.dataLoaded = false;
             if (data) {
-                console.log('data.data - ', data.data);
-                console.log('data.err - ', data.err);
+                // console.log('data.data - ', data.data);
+                // console.log('data.err - ', data.err);
                 if (data.err) {
                     alert('Time entry has already done!');
                     $state.go('home');

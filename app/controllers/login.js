@@ -19,14 +19,14 @@ function submit($scope,$state,$http,localStorageService,restService) {
             password : $scope.pwd
         };
         localStorageService.set('mobile', credentials.mobile);
-        console.log(localStorageService.get('mobile'));
+        // console.log(localStorageService.get('mobile'));
         $scope.dataLoaded = true;
         $scope.log.$invalid = true;
 
         function cb(data,error) {
             $scope.dataLoaded = false;
             $scope.log.$invalid = false;
-            console.log(data);
+            // console.log(data);
             if(data != null) {
                 if (data.error) {
                     alert('Incorrect Password or Mobile!!');

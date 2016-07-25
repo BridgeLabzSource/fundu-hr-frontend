@@ -10,7 +10,7 @@ function retrieveService(){
         },
         setDatax : function(val){
             dataX = val.data;
-            console.log('dataXd',dataX);
+            // console.log('dataXd',dataX);
         }
     }
 }

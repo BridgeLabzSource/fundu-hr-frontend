@@ -5,8 +5,8 @@ angular.module('attendanceApp').directive('autoManager', function (localStorageS
     var socket = io.connect('https://funduhr-backend.herokuapp.com');
     socket.emit('message');
     socket.on('server ready', function(msg){
-        console.log('inside socket.on');
-        console.log(msg);
+        // console.log('inside socket.on');
+        // console.log(msg);
         // localStorageService.set('dict', msg);
     });
     // var dict = "The quick brown fox jumps over the lazy dog";

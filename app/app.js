@@ -21,7 +21,7 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule'])
                 templateUrl: 'pages/login.html',
                 controller: 'loginCtrl',
                 onEnter: function () {
-                    console.log('login');
+                    // console.log('login');
                 }
             })
 
@@ -31,7 +31,7 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule'])
                 templateUrl: 'pages/register.html',
                 controller: 'regCtrl',
                 onEnter: function () {
-                    console.log('Registration');
+                    // console.log('Registration');
                 }
             })
 
@@ -41,7 +41,7 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule'])
                 templateUrl: 'pages/otp.html',
                 controller: 'otpCtrl',
                 onEnter: function () {
-                    console.log('OTP verification');
+                    // console.log('OTP verification');
                 }
             })
 
@@ -51,7 +51,7 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule'])
                 templateUrl: 'pages/attendance.html',
                 controller: 'attendanceCtrl',
                 onEnter: function () {
-                    console.log('Time Entry Message');
+                    // console.log('Time Entry Message');
                 }
             })
             .state('home.timeEntry', {
@@ -59,7 +59,7 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule'])
                 templateUrl: 'pages/confirmTime.html',
                 controller: 'timeConfirmCtrl',
                 onEnter: function () {
-                    console.log('Time entry confirmation');
+                    // console.log('Time entry confirmation');
                 }
             });
 
