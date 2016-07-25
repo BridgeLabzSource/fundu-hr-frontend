@@ -1,7 +1,7 @@
 angular.module('attendanceApp').controller('timeConfirmCtrl', confirm);
 
 function confirm($scope, restService, $state, localStorageService, DateTime, retrieveService) {
-
+    
     $scope.dataLoaded = false;
     $scope.dataXX = retrieveService.getDataX();
   
@@ -13,15 +13,19 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
     };
 
     $scope.disIn = function (e) {
-        if ($scope.confirmAll.outTime !== 0) {
-            return true;
+        var hide = true;
+        if ($scope.confirmAll.outTime == 0) {
+            hide = false;
         }
+        return hide;
     };
 
     $scope.disOut = function (e) {
+        var hide = false;
         if ($scope.confirmAll.outTime == 0) {
-            return true;
+            hide = true;
         }
+        return hide;
     };
 
     $scope.date1 = DateTime.getDate1($scope.confirmAll.inTime);
@@ -56,8 +60,8 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
                 alert('Your attendance has already logged.');
                 $state.go('home');
             } else {
-                alert('Saved!!');
-                $state.go('succeed');
+                alert('Saved!! Time Entry has done successfully.');
+                $state.go('home');
             }
         }
 
