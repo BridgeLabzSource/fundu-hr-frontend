@@ -30,6 +30,7 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                     alert('Message has been sent..');
                     $scope.message = '';
                     retrieveService.setDatax(data);
+                    console.log('retrieve data set in attendance controller');
                     $state.go('home.timeEntry');
                 }
                 else if (data.data == "please try again...") {

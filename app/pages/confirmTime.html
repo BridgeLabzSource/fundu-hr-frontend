@@ -3,39 +3,44 @@
         <fieldset>
             <legend><h3><label>Time Entry</label></h3></legend>
             <div class="table-responsive" align="center">
+                <!--<table>-->
+                <!--<tr>-->
+                    <!--<td>-->
+                        <!--<table-generator data="resource"></table-generator>-->
+                    <!--</td>-->
                 <table cellspacing="50px">
-                    <tbody>
-                    <tr>
-                        <th>
-                            <label>DATE</label>
-                        </th>
-                        <th>
-                            <label>IN</label>
-                        </th>
-                        <th>
-                            <label>OUT</label>
-                        </th>
-                        <th></th>
-                    <tr>
-                        <td>
-                            <input class="date1" id="date1" type="text" ng-model="date1" placeholder="yyyy-mm-dd" required/>
-                        </td>
-                        <td>
-                            <input class="inTimeClass" id="inTime" type="text" ng-disabled="disIn()" ng-model="inTime">
-                        </td>
+                <tbody>
+                <tr>
+                <th>
+                <label>DATE</label>
+                </th>
+                <th>
+                <label>IN</label>
+                </th>
+                <th>
+                <label>OUT</label>
+                </th>
+                <th></th>
+                <tr>
+                <td>
+                <input class="date1" id="date1" type="text" ng-model="date1" placeholder="yyyy-mm-dd" required/>
+                </td>
+                <td>
+                <input class="inTimeClass" id="inTime" type="text" ng-disabled="disIn()" ng-model="inTime">
+                </td>
 
-                        <td>
-                            <input class="outTimeClass" id="outTime" type="text" ng-disabled="disOut()" ng-model="outTime">
-                        </td>
+                <td>
+                <input class="outTimeClass" id="outTime" type="text" ng-disabled="disOut()" ng-model="outTime">
+                </td>
 
-                        <td >
-                            <button class="btn btn-lg btn-primary btn-block" ng-click="confirmTime()" ng-disabled="conf">
-                                <span ng-hide="dataLoaded">Confirm</span>
-                                <span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i><p class="k">Loading..</p></span>
-                            </button>
-                        </td>
-                    </tr>
-                    </tbody>
+                <td>
+                <button class="btn btn-lg btn-primary btn-block" ng-click="confirmTime()" ng-disabled="conf">
+                <span ng-hide="dataLoaded">Confirm</span>
+                <span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i><p class="k">Loading..</p></span>
+                </button>
+                </td>
+                </tr>
+                </tbody>
                 </table>
             </div>
         </fieldset>

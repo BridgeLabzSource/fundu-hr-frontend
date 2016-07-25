@@ -1,0 +1,36 @@
+<div class="logo center">
+    <img src="images/logo-white.png">
+</div>
+<form class="form-signUp center" id="reg" name="reg1" method="POST">
+    <center>
+        <div class="register">
+            <h2 class="form-signUp-heading" style="top:4.7em;">Register</h2><br>
+            <div class="form-group" ng-class="{ 'has-error' : reg1.mobile.$invalid }">
+                <label for="mobile" class="sr-only">Mobile</label>
+                <div class="inputMob">
+                    <span class="mobileinput">+91</span>
+                    <input id="mobile" name="mobile" class="form-control" placeholder="Mobile" ng-model="mobile"
+                           required autofocus>
+                </div><br>
+                <label for="email" class="sr-only">Email</label>
+                <input id="email" type="email" name="email" class="form-control" placeholder="abc@xyz.com"
+                       ng-model="email" required><br>
+                <label for="pwd" class="sr-only">Password</label>
+                <input id="pwd" type="password" name="pwd" class="form-control" placeholder="Enter Password"
+                       ng-model="pwd" required><br>
+                <label for="repwd" class="sr-only">Password</label>
+                <input id="repwd" type="password" name="repwd" class="form-control" placeholder="Re-enter Password"
+                       ng-model="repwd" required>
+            </div>
+            <br>
+            <!--<p ng-show="log.mobile.$invalid " class="help-block">Mobile is not valid!!</p>-->
+            <!--<p ng-show="log.pwd.$invalid " class="help-block">Invalid Password!!</p>-->
+        </div>
+        <button class="btn btn-lg btn-success btn-block" ng-click="register()" ng-disabled="reg1.$invalid">
+            <span ng-hide="dataLoaded">Register</span>
+            <span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i>Loading...</span>
+        </button>
+        <br>
+        </div>
+    </center>
+</form>

@@ -21,15 +21,17 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
             $scope.dataLoaded = false;
             $scope.otp2.$invalid = false;
             console.log(data.data);
-            if (data) {
+            if (data.data) {
                 console.log(otpVerify);
                 alert('Welcome to BridgeLabz');
                 $state.go('home');
 
-            } else {
+            } else if(data.err || data.data == null) {
+                alert('Number is not found in DB');
+                $state.go('registration');
+            }else{
                 alert('Incorrect OTP');
-                $state.go('Login');
-
+                $state.go('OTP');
             }
         }
     };

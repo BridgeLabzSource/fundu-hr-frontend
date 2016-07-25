@@ -4,7 +4,7 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
     
     $scope.dataLoaded = false;
     $scope.dataXX = retrieveService.getDataX();
-  
+
     $scope.confirmAll = {
         mobile: $scope.dataXX.userId,
         inTime: $scope.dataXX.inTime,
@@ -27,7 +27,7 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
         }
         return hide;
     };
-
+    
     $scope.date1 = DateTime.getDate1($scope.confirmAll.inTime);
     $scope.inTime = DateTime.getTime1($scope.confirmAll.inTime);
     $scope.outTime = DateTime.getTime1($scope.confirmAll.outTime);

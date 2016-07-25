@@ -1,53 +1,21 @@
 <div class="log">
     <div class="table-responsive">
-        <table class="table">
+        <table>
             <thead>
-            <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>In</th>
-                <th>Out</th>
-                <th>Date</th>
+            <tr ng-repeat="i in data.data">
+                <th ng-repeat="(k,v) in i">{{k}}</th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Pranali Patil</td>
-                <td>8.00am</td>
-                <td>7.00pm</td>
-                <td>12-June-2015</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>Rishika Desai</td>
-                <td>8.00am</td>
-                <td>7.00pm</td>
-                <td>12-June-2015</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Shreedevi Kamatam</td>
-                <td>8.00am</td>
-                <td>7.00pm</td>
-                <td>12-June-2015</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Pranali Patil</td>
-                <td>8.00am</td>
-                <td>7.00pm</td>
-                <td>12-June-2015</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Pranali Patil</td>
-                <td>8.00am</td>
-                <td>7.00pm</td>
-                <td>12-June-2015</td>
+            <tr ng-repeat="val in data.data">
+                <td ng-repeat="inModel in val">
+                    <input ng-model="inModel">
+                </td>
             </tr>
             </tbody>
         </table>
+        <!--<button ng-click="submit1()">Confirm</button>-->
+        <!--<p ng-repeat="a in data">{{a}}</p>-->
     </div>
 </div>
 

@@ -25,6 +25,16 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule'])
                 }
             })
 
+            /** Registration state */
+            .state('registration', {
+                url: '/sign_up',
+                templateUrl: 'pages/register.html',
+                controller: 'regCtrl',
+                onEnter: function () {
+                    console.log('Registration');
+                }
+            })
+
             /** OTP state */
             .state('OTP', {
                 url: '/OTP',
