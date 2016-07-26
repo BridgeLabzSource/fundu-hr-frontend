@@ -1,18 +1,21 @@
 angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
 
-function submitAttnd($scope, localStorageService, $state, restService, retrieveService) {
+function submitAttnd($scope, localStorageService, $state, restService, retrieveService,$timeout) {
 
     $scope.dataLoaded = false;
     $scope.isActive = true;
     $scope.showLog = true;
 
     $scope.submitMsg = function () {
-
+        if($scope.message.toLowerCase() == "log out" || "logout"){
+            $timeout(function() {
+                    $state.go('Login');
+                    }, 400);
+        }else{
         $scope.dataLoaded = true;
-
         var timeEntryCredentials = {
             mobile: localStorageService.get('mobile'),
-            message: $scope.message,
+            message: $scope.message
         };
         var dataTime = timeEntryCredentials;
         // console.log(dataTime);
@@ -38,7 +41,7 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                     $state.go('home');
                 }
             }
-            else{
+            else {
                 alert('try again later!!');
             }
 
@@ -51,6 +54,7 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
             //         $scope.showLog = true;
             //     }, 800);
             // }
+        }
 
         }
     }
