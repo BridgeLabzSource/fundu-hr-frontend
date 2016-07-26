@@ -21,16 +21,16 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
         function cb(data, error) {
             $scope.dataLoaded = false;
             if (data) {
-                // console.log('data.data - ', data.data);
-                // console.log('data.err - ', data.err);
+                console.log('data.data - ', data.data);
+                console.log('data.err - ', data.err);
                 if (data.err) {
-                    alert('Time entry has already done!');
+                    alert(data.err);
                     $state.go('home');
                 } else if (data.data.userId) {
                     alert('Message has been sent..');
                     $scope.message = '';
                     retrieveService.setDatax(data);
-                    console.log('retrieve data set in attendance controller');
+                    // console.log('retrieve data set in attendance controller');
                     $state.go('home.timeEntry');
                 }
                 else if (data.data == "please try again...") {

@@ -7,7 +7,7 @@ angular.module('attendanceApp').directive('autoManager', function (localStorageS
     socket.on('server ready', function(msg){
         // console.log('inside socket.on');
         // console.log(msg);
-        // localStorageService.set('dict', msg);
+        localStorageService.set('dict', msg);
     });
     // var dict = "The quick brown fox jumps over the lazy dog";
     var show = new Set();
