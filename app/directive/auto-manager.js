@@ -2,7 +2,7 @@ angular.module('attendanceApp').directive('autoManager', function (localStorageS
     var options = {
         'up_class': 'moveUp'
     };
-    var socket = io.connect('https://funduhr-backend.herokuapp.com');
+    var socket = io.connect();
     socket.emit('message');
     socket.on('server ready', function(msg){
         // console.log('inside socket.on');

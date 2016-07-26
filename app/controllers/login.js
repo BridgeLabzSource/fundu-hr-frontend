@@ -28,14 +28,16 @@ function submit($scope,$state,$http,localStorageService,restService) {
             $scope.log.$invalid = false;
             // console.log(data);
             if(data != null) {
-                if (data.error) {
-                    alert('Incorrect Password or Mobile!!');
+                if (data.err) {
+                    alert(data.err);
                     $state.go('Login');
                 }
                 else {
                     $state.go('home');
                     alert('Welcome to BridgeLabz');
                 }
+            }else{
+                alert('Server Problem!!');
             }
         }
 
