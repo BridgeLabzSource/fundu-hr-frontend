@@ -7,11 +7,11 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
     $scope.showLog = true;
 
     $scope.submitMsg = function () {
-        if($scope.message.toLowerCase() == "log out" || "logout"){
+        if($scope.message.toLowerCase() == "log out"){
             $timeout(function() {
-                    $state.go('Login');
-                    }, 400);
-        }else{
+                $state.go('Login');
+            }, 500);
+        }
         $scope.dataLoaded = true;
         var timeEntryCredentials = {
             mobile: localStorageService.get('mobile'),
@@ -56,6 +56,6 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
             // }
         }
 
-        }
+
     }
 }
