@@ -20,7 +20,7 @@ app.use('/',function(req,res){
 io.on('connection', function(socket) {
     console.log('a user connected to server');
     socket.on('message', function() {
-        var data = ['I am in office', 'I left from office', 'I left office yesterday', 'In office', 'Ckeckout office'];
+        var data = ['I am in office', 'I left from office', 'I left office yesterday', 'In the office', 'Ckeckout office'];
         socket.emit('server ready', data);
     });
     socket.on('disconnect', function() {
