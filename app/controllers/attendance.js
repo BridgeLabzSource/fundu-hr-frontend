@@ -11,51 +11,51 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
             $timeout(function() {
                 $state.go('Login');
             }, 500);
-        }
-        $scope.dataLoaded = true;
-        var timeEntryCredentials = {
-            mobile: localStorageService.get('mobile'),
-            message: $scope.message
-        };
-        var dataTime = timeEntryCredentials;
-        // console.log(dataTime);
-        restService.postRequest('message', dataTime, cb);
+        }else {
+            $scope.dataLoaded = true;
+            var timeEntryCredentials = {
+                mobile: localStorageService.get('mobile'),
+                message: $scope.message
+            };
+            var dataTime = timeEntryCredentials;
+            // console.log(dataTime);
+            restService.postRequest('message', dataTime, cb);
 
-        function cb(data, error) {
-            $scope.dataLoaded = false;
-            if (data) {
-                // console.log('data.data - ', data.data);
-                // console.log('data.err - ', data.err);
-                if (data.err) {
-                    alert(data.err);
-                    $state.go('home');
-                } else if (data.data.userId) {
-                    alert('Message has been sent..');
-                    $scope.message = '';
-                    retrieveService.setDatax(data);
-                    // console.log('retrieve data set in attendance controller');
-                    $state.go('home.timeEntry');
+            function cb(data, error) {
+                $scope.dataLoaded = false;
+                if (data) {
+                    // console.log('data.data - ', data.data);
+                    // console.log('data.err - ', data.err);
+                    if (data.err) {
+                        alert(data.err);
+                        $state.go('home');
+                    } else if (data.data.userId) {
+                        alert('Message has been sent..');
+                        $scope.message = '';
+                        retrieveService.setDatax(data);
+                        // console.log('retrieve data set in attendance controller');
+                        $state.go('home.timeEntry');
+                    }
+                    else if (data.data == "please try again...") {
+                        alert('Invalid statement, try something else..');
+                        $state.go('home');
+                    }
                 }
-                else if (data.data == "please try again...") {
-                    alert('Invalid statement, try something else..');
-                    $state.go('home');
+                else {
+                    alert('try again later!!');
                 }
-            }
-            else {
-                alert('try again later!!');
-            }
 
-            // if($scope.message.toLowerCase() == "log >"){
-            //     $timeout(function() {
-            //         $scope.showLog = false;
-            //     }, 1000);
-            // }else if($scope.message.toLowerCase() == "clear"){
-            //     $timeout(function() {
-            //         $scope.showLog = true;
-            //     }, 800);
-            // }
+                // if($scope.message.toLowerCase() == "log >"){
+                //     $timeout(function() {
+                //         $scope.showLog = false;
+                //     }, 1000);
+                // }else if($scope.message.toLowerCase() == "clear"){
+                //     $timeout(function() {
+                //         $scope.showLog = true;
+                //     }, 800);
+                // }
+            }
         }
-
 
     }
 }
