@@ -19,7 +19,7 @@ angular.module('attendanceApp').directive('autoManager', function (localStorageS
         controller: function ($rootScope, $scope) {
 
             $rootScope.data = localStorageService.get('dict');
-            console.log($rootScope.data);
+            console.log();
         },
         link: function ($scope, element) {
             var input = '';
