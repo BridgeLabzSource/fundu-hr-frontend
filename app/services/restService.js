@@ -7,7 +7,6 @@ function restService($http){
 
     //getRequest function
     this.getRequest = function (path,query,cb){
-        console.log('In getRequest');
 
         var getR = $http.get(baseUrl + path,query).success(function(data){
             cb(data,null);
@@ -19,7 +18,7 @@ function restService($http){
 
     //postRequest function
     this.postRequest = function(path,data,cb){
-        console.log('inside post');
+
         var postR = $http.post(baseUrl+path,data).success(function(data){
 
             cb(data,null);

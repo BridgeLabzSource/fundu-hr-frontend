@@ -1,5 +1,5 @@
 angular.module('attendanceApp').directive('tableGenerator', function (retrieveService) {
-    console.log('inside table generator');
+
     return {
         restrict: 'E',
         scope: {
@@ -7,8 +7,6 @@ angular.module('attendanceApp').directive('tableGenerator', function (retrieveSe
         },
         templateUrl: 'pages/table.html',
         link: function ($scope, element, attribute) {
-            console.log('inside link()');
-            console.log('resouce data - ',$scope.data);
             $scope.conf = {
                 data : {}
             };
