@@ -5,13 +5,13 @@ function interceptorAt($q){
     return{
 
         request : function(config) {
-            console.log('request has been sent..');
+            // console.log('request has been sent..');
             return config || $q.when(config);
         },
 
         requestError : function(config){
 
-            console.log('Client side error..');
+            // console.log('Client side error..');
             return $q.reject(config);
 
         },
@@ -27,7 +27,7 @@ function interceptorAt($q){
 
             if(res.error) {
                 alert('Error');
-                console.log('Error');
+                // console.log('Error');
                 $state.go('Attendance');
             }
             console.log('Error occured');

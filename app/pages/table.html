@@ -2,20 +2,18 @@
     <div class="table-responsive">
         <table>
             <thead>
-            <tr ng-repeat="i in data.data">
-                <th ng-repeat="(k,v) in i">{{k}}</th>
-            </tr>
+                <tr ng-repeat="i in data.data">
+                    <th ng-repeat="(k,v) in i">{{k}}</th>
+                </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="val in data.data">
-                <td ng-repeat="inModel in val">
-                    <input ng-model="inModel">
-                </td>
-            </tr>
+                <tr ng-repeat="val in data.data">
+                    <td ng-repeat="(i,value) in val track by $index">
+                        <input ng-disabled="val[i]==0" ng-model="val[i]"/>
+                    </td>
+                </tr>
             </tbody>
         </table>
-        <!--<button ng-click="submit1()">Confirm</button>-->
-        <!--<p ng-repeat="a in data">{{a}}</p>-->
     </div>
 </div>
 
