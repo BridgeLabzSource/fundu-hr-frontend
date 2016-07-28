@@ -38,7 +38,6 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
 
     $scope.confirmTime = function () {
 
-        console.log('confirm time - ',$scope.resource);
         $scope.dataLoaded = true;
         $scope.conf = true;
         $scope.inTimeFinal = DateTime.setDateTime($scope.resource.data[0].Date, $scope.resource.data[0].In);
