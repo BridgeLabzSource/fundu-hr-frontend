@@ -1,20 +1,29 @@
 <div class="timeEntr" align="center">
     <form class="timeEnt">
-        <fieldset>
-            <legend><h3><label>Time Entry</label></h3></legend>
-            <table><tr><td>
-            <div class="table-responsive" align="center">
-                <table>
-                <tr>
-                    <td>
-                        <table-generator data="resource"></table-generator>
-                    </td>
-                </table>
-            </div></td>
-                <td><button class="btn btn-lg btn-primary btn-block" ng-click="confirmTime()" ng-disabled="conf">
-                    <span ng-hide="dataLoaded">Confirm</span>
-                    <span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i><p class="k">Loading..</p></span>
-                </button></td></tr></table>
-        </fieldset>
+        <div class="table table-responsive" style="overflow-x:auto;">
+        <table>
+            <tr>
+                <td>
+                    <div align="center">
+                        <table>
+                            <tr>
+                                <td>
+                                    <table-generator data="resource"></table-generator>
+                                </td>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" align="center">
+                    <button class="btn btn-lg btn-primary " ng-click="confirmTime()" ng-disabled="conf">
+                        <span ng-hide="dataLoaded">Confirm</span>
+                        <span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i>
+                            <p class="k">Loading..</p></span>
+                    </button>
+                </td>
+            </tr>
+        </table>
+        </div>
     </form>
 </div>

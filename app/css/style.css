@@ -1,5 +1,5 @@
 body {
-    background-image: url('../images/wall1.jpeg');
+    background-image: url('../images/wall1-min.jpeg');
     /*background-image: linear-gradient(to bottom left,#00E5B7,#08B8E5);*/
     background-size: cover;
     background-repeat: no-repeat;
@@ -128,9 +128,12 @@ body {
 .send{
     padding: 13px;
 }
+
 table {
     color: black;
+    border: none;
 }
+
 .txt{
     color: white;
     font-size: large;
@@ -156,12 +159,12 @@ table {
 }
 
 .timeEntr {
-    background-color: #000000;
+    /*background-color: #000000;*/
     border: 0px solid black;
     border-radius: 10px;
     font-weight: bold;
     color: #000000;
-    background: rgba(0, 0, 0, 0.3);
+    /*background: rgba(0, 0, 0, 0.3);*/
     padding-bottom: 50px;
     padding-top: 20px;
 }

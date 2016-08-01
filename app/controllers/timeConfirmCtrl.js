@@ -52,16 +52,16 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
             totalTime: confirmAll.totalTime,
             check: "true"
         };
-
+        console.log('post - ',confirmAttdc);
         restService.postRequest('message/timeEntryConform', confirmAttdc, cb);
 
         function cb(data, error) {
             $scope.dataLoaded = false;
             $scope.conf = false;
-            // console.log(data);
+            console.log(data);
 
-            if (data.err == "already update time") {
-                alert('Your attendance has already logged.');
+            if (data.err) {
+                alert(data.err);
                 $state.go('home');
             } else {
                 alert('Saved!! Time Entry has done successfully.');
