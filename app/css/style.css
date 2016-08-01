@@ -1,13 +1,13 @@
 body {
-    background-image: url('../images/wall1-min.jpeg');
+    background-image: url('../images/bg1.jpg');
     /*background-image: linear-gradient(to bottom left,#00E5B7,#08B8E5);*/
-    background-size: cover;
     background-repeat: no-repeat;
     height: 100vh;
     display: block;
     padding: 0 !important;
     margin: 0;
-
+    background-size: contain;
+    background-size: cover;
 }
 
 .center {
@@ -50,12 +50,12 @@ body {
 }
 
 #log {
-    background-color: #000000;
-    border: 0px solid black;
+    background-color: #FFFFFF;
+    border: 0px solid white;
     border-radius: 10px;
     font-weight: bold;
-    color: #FFFFFF;
-    background: rgba(0, 0, 0, 0.5);
+    color: #000000;
+    background: rgba(0, 0, 0, 0.4);
     padding-bottom: 30px;
 }
 
@@ -75,11 +75,11 @@ body {
 }
 
 #reg {
-    background-color: #000000;
+    background-color: #FFFFFF;
     border: 0px solid black;
     border-radius: 10px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #000000;
     background: rgba(0, 0, 0, 0.5);
     padding-bottom: 30px;
 }
@@ -100,11 +100,11 @@ body {
 }
 
 .form-otp {
-    background-color: #000000;
+    background-color: #FFFFFF;
     border: 0px solid black;
     border-radius: 10px;
     font-weight: bold;
-    color: #FFFFFF;
+    color: #000000;
     background: rgba(0, 0, 0, 0.5);
     padding-bottom: 30px;
 }
@@ -146,7 +146,7 @@ table {
     font-size: xx-large;
 }
 /*.log{*/
-    /*background-color: #000000;*/
+    /*background-color: #FFFFFF;*/
     /*border: 0px solid black;*/
     /*/!*font-weight: bold;*!/*/
     /*color: #FFFFFF;*/
@@ -159,14 +159,14 @@ table {
 }
 
 .timeEntr {
-    /*background-color: #000000;*/
+    /*background-color: #FFFFFF;*/
     border: 0px solid black;
     border-radius: 10px;
     font-weight: bold;
     color: #000000;
     /*background: rgba(0, 0, 0, 0.3);*/
     padding-bottom: 50px;
-    padding-top: 20px;
+    padding-top: 50px;
 }
 label{
     color : white;
@@ -201,7 +201,7 @@ th{
 }
 .succeed{
     font-weight: bold;
-    color: #FFFFFF;
+    color: #000000;
     font-family: 'Exo', sans-serif;
     font-size: 16px;
     font-weight: 400;
