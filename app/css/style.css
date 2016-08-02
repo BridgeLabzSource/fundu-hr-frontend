@@ -1,4 +1,4 @@
-body {
+.cover {
     background-image: url('../images/bg1.jpg');
     /*background-image: linear-gradient(to bottom left,#00E5B7,#08B8E5);*/
     background-repeat: no-repeat;
@@ -6,9 +6,11 @@ body {
     display: block;
     padding: 0 !important;
     margin: 0;
-    background-size: contain;
     background-size: cover;
+    background-attachment: fixed;
+    overflow: scroll;
 }
+
 
 .center {
     width: 400px;
