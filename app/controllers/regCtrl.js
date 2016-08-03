@@ -21,7 +21,7 @@ angular.module('attendanceApp').controller('regCtrl',function($state,$scope,$htt
             if(data != null) {
                 if (data.error) {
                     ngDialog.open({
-                        template: "<h3>Please enter valid Data!!</h3>",
+                        template: "<h3 style='color: brown'>Please enter valid Data!!</h3>",
                         className: 'ngdialog-theme-default',
                         plain: true,
                         overlay: true

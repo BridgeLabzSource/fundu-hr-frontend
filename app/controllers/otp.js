@@ -33,7 +33,7 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
 
             } else if(data.err || data.data == null) {
                 ngDialog.open({
-                    template: "<h3>Number is not found in DB</h3>",
+                    template: "<h3 style='color: sandybrown'>Number is not found in DB</h3>",
                     className: 'ngdialog-theme-default',
                     plain: true,
                     overlay: true
@@ -41,7 +41,7 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
                 $state.go('registration');
             }else{
                 ngDialog.open({
-                    template: "<h3>Incorrect OTP</h3>",
+                    template: "<h3 style='color: brown'>Incorrect OTP</h3>",
                     className: 'ngdialog-theme-default',
                     plain: true,
                     overlay: true

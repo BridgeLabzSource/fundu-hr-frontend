@@ -62,7 +62,7 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
 
             if (data.err) {
                 ngDialog.open({
-                    template: "<h3>"+data.err+"</h3>",
+                    template: "<h3 style='color: brown'>"+data.err+"</h3>",
                     className: 'ngdialog-theme-default',
                     plain: true,
                     overlay: true
@@ -70,7 +70,7 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
                 $state.go('home');
             } else {
                 ngDialog.open({
-                    template: "<h3>Saved!! Time Entry has done successfully..</h3>",
+                    template: "<h3 style='color: darkolivegreen'>Saved!! Time Entry has done successfully..</h3>",
                     className: 'ngdialog-theme-default',
                     plain: true,
                     overlay: true

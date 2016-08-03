@@ -28,7 +28,7 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                     // console.log('data.err - ', data.err);
                     if (data.err) {
                         ngDialog.open({
-                            template: "<h3>"+data.err+"</h3>",
+                            template: "<h3 style='color: brown'>"+data.err+"</h3>",
                             className: 'ngdialog-theme-default',
                             plain: true,
                             overlay: true
@@ -36,7 +36,7 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                         $state.go('home');
                     } else if (data.data.userId) {
                         ngDialog.open({
-                            template: "<h3>Message has been sent..</h3>",
+                            template: "<h3 style='color: darkolivegreen'>Message has been sent..</h3>",
                             className: 'ngdialog-theme-default',
                             plain: true,
                             overlay: true
@@ -48,7 +48,7 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                     }
                     else if (data.data == "please try again...") {
                         ngDialog.open({
-                            template: "<h3>Invalid statement, try something else..</h3>",
+                            template: "<h3 style='color: brown'>Invalid statement, try something else..</h3>",
                             className: 'ngdialog-theme-default',
                             plain: true,
                             overlay: true
@@ -58,7 +58,7 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                 }
                 else {
                     ngDialog.open({
-                        template: "<h3>Try again later..</h3>",
+                        template: "<h3 style='color:sandybrown'>Try again later..</h3>",
                         className: 'ngdialog-theme-default',
                         plain: true,
                         overlay: true

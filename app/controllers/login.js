@@ -29,18 +29,13 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog) {
             // console.log(data);
             if(data != null) {
                 if (data.err) {
-                    ngDialog.open({
-                        template: "<h3>"+data.err+"</h3>",
-                        className: 'ngdialog-theme-default',
-                        plain: true,
-                        overlay: true
-                    });
+                    alert(data.err);
                     $state.go('Login');
                 }
                 else {
                     $state.go('home');
                     ngDialog.open({
-                        template: '<h2>Welcome to BridgeLabz!!</h2>',
+                        template: '<h1>Welcome to BridgeLabz!!</h1>',
                         className: 'ngdialog-theme-default',
                         plain: true,
                         overlay: true
