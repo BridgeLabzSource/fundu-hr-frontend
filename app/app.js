@@ -3,7 +3,7 @@
  * @param {string} ngApp - parameter refers to the HTML element in which app will run
  * @param {Array} injector - loading modules through injector
  * */
-angular.module('attendanceApp', ['ui.router', 'LocalStorageModule'])
+angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog'])
 
 /** configure existing services */
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {

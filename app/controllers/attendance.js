@@ -1,6 +1,6 @@
 angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
 
-function submitAttnd($scope, localStorageService, $state, restService, retrieveService,$timeout) {
+function submitAttnd($scope, localStorageService, $state, restService, retrieveService,$timeout,ngDialog) {
 
     $scope.dataLoaded = false;
     $scope.isActive = true;
@@ -27,22 +27,42 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                     // console.log('data.data - ', data.data);
                     // console.log('data.err - ', data.err);
                     if (data.err) {
-                        alert(data.err);
+                        ngDialog.open({
+                            template: "<h3>"+data.err+"</h3>",
+                            className: 'ngdialog-theme-default',
+                            plain: true,
+                            overlay: true
+                        });
                         $state.go('home');
                     } else if (data.data.userId) {
-                        alert('Message has been sent..');
+                        ngDialog.open({
+                            template: "<h3>Message has been sent..</h3>",
+                            className: 'ngdialog-theme-default',
+                            plain: true,
+                            overlay: true
+                        });
                         $scope.message = '';
                         retrieveService.setDatax(data);
                         // console.log('retrieve data set in attendance controller');
                         $state.go('home.timeEntry');
                     }
                     else if (data.data == "please try again...") {
-                        alert('Invalid statement, try something else..');
+                        ngDialog.open({
+                            template: "<h3>Invalid statement, try something else..</h3>",
+                            className: 'ngdialog-theme-default',
+                            plain: true,
+                            overlay: true
+                        });
                         $state.go('home');
                     }
                 }
                 else {
-                    alert('try again later!!');
+                    ngDialog.open({
+                        template: "<h3>Try again later..</h3>",
+                        className: 'ngdialog-theme-default',
+                        plain: true,
+                        overlay: true
+                    });
                 }
 
                 // if($scope.message.toLowerCase() == "log >"){

@@ -1,4 +1,4 @@
-angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$http,localStorageService,restService) {
+angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$http,localStorageService,restService,ngDialog) {
 
     $scope.dataLoaded = false;
 
@@ -23,14 +23,29 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
             // console.log(data.data);
             if (data.data) {
                 // console.log(otpVerify);
-                alert('Welcome to BridgeLabz');
+                ngDialog.open({
+                    template: "<h2>Welcome to BridgeLabz!!</h2>",
+                    className: 'ngdialog-theme-default',
+                    plain: true,
+                    overlay: true
+                });
                 $state.go('home');
 
             } else if(data.err || data.data == null) {
-                alert('Number is not found in DB');
+                ngDialog.open({
+                    template: "<h3>Number is not found in DB</h3>",
+                    className: 'ngdialog-theme-default',
+                    plain: true,
+                    overlay: true
+                });
                 $state.go('registration');
             }else{
-                alert('Incorrect OTP');
+                ngDialog.open({
+                    template: "<h3>Incorrect OTP</h3>",
+                    className: 'ngdialog-theme-default',
+                    plain: true,
+                    overlay: true
+                });
                 $state.go('OTP');
             }
         }

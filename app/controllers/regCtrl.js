@@ -1,4 +1,4 @@
-angular.module('attendanceApp').controller('regCtrl',function($state,$scope,$http,localStorageService,restService) {
+angular.module('attendanceApp').controller('regCtrl',function($state,$scope,$http,localStorageService,restService,ngDialog) {
 
     $scope.dataLoaded = false;
 
@@ -20,7 +20,12 @@ angular.module('attendanceApp').controller('regCtrl',function($state,$scope,$htt
             // console.log(data);
             if(data != null) {
                 if (data.error) {
-                    alert('Please enter valid Data!!');
+                    ngDialog.open({
+                        template: "<h3>Please enter valid Data!!</h3>",
+                        className: 'ngdialog-theme-default',
+                        plain: true,
+                        overlay: true
+                    });
                     $state.go('registration');
                 }
                 else {
