@@ -6,13 +6,18 @@
                     <th ng-repeat="(k,v) in i">{{k}}</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr ng-repeat="val in data.data">
+                <tbody>
+                <tr ng-if="data.data[0].Out == 0" ng-repeat="val in data.data">
                     <td ng-repeat="(i,value) in val track by $index">
                         <input ng-disabled="val[i]==0" ng-model="val[i]"/>
                     </td>
                 </tr>
-            </tbody>
+                    <tr ng-if="data.data[0].Out != 0" ng-repeat="val in data.data">
+                        <td ng-repeat="(i,value) in val track by $index">
+                            <input ng-disabled="$index!=2" ng-model="val[i]"/>
+                        </td>
+                    </tr>
+                </tbody>
         </table>
     </div>
 </div>

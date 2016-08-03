@@ -14,7 +14,6 @@ angular.module('attendanceApp').directive('tableGenerator', function (retrieveSe
                 $scope.conf.data[i] = $scope.data.data[i];
                 // console.log($scope.conf.data[i]);
             }
-
             retrieveService.setDatax($scope.conf);
         }
     }

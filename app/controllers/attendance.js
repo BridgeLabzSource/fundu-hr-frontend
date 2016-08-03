@@ -24,8 +24,8 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
             function cb(data, error) {
                 $scope.dataLoaded = false;
                 if (data) {
-                    console.log('data.data - ', data.data);
-                    console.log('data.err - ', data.err);
+                    // console.log('data.data - ', data.data);
+                    // console.log('data.err - ', data.err);
                     if (data.err) {
                         alert(data.err);
                         $state.go('home');
