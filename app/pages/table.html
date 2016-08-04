@@ -9,7 +9,7 @@
                 <tbody>
                 <tr ng-if="data.data[0].Out == 0" ng-repeat="val in data.data">
                     <td ng-repeat="(i,value) in val track by $index">
-                        <input ng-disabled="val[i]==0" ng-model="val[i]"/>
+                        <input ng-disabled="$index!=1" ng-model="val[i]"/>
                     </td>
                 </tr>
                     <tr ng-if="data.data[0].Out != 0" ng-repeat="val in data.data">
