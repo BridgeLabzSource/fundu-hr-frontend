@@ -66,6 +66,10 @@ function DateTime() {
             // console.log('24 hour converter');
             var time = time;
             var tt = time.split(':');
+            var rightTime = tt[0].split('');
+            if(rightTime[0]==0){
+                tt[0] = rightTime[1];
+            }
             var hours = tt[0];
             var minutes = tt[1];
             var sT = tt[2].split(' ');
