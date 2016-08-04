@@ -41,7 +41,7 @@ angular.module('attendanceApp').controller('otpCtrl',function($state,$scope,$htt
                 $state.go('registration');
             }else{
                 ngDialog.open({
-                    template: "<h3 style='color: brown'>Incorrect OTP</h3>",
+                    template: "<h3 style='color: #EB444A'>Incorrect OTP</h3>",
                     className: 'ngdialog-theme-default',
                     plain: true,
                     overlay: true
