@@ -48,7 +48,8 @@
 
 .logo {
     display: block;
-    margin: auto;
+    /*margin: auto;*/
+    margin:auto;
 }
 
 #log {
@@ -222,6 +223,18 @@ th{
 }
 
 @media only screen and (max-width: 480px) {
+    .logo{
+        margin-top:-110px;
+    }
+    #log{
+        width: 300px;
+        background: rgba(0, 0, 0, 0.0);
+    }
+    .inputMob span{
+        margin-left:-120px;
+    }
+}
+@media only screen and (min-width: 480px) and (max-width: 767px) {
     .logo{
         margin-top:-110px;
     }
