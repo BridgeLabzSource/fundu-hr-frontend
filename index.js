@@ -3,7 +3,7 @@
  * */
 var express = require('express')
     ,app = express()
-    , http = require('http').Server(app)
+    ,http = require('http').Server(app)
     ,io = require('socket.io')(http)
     ,port = process.env.PORT||3000
     ,bodyParser = require('body-parser');
@@ -18,7 +18,8 @@ app.use('/',function(req,res){
 });
 
 io.on('connection', function(socket) {
-    console.log('a user connected to server');
+    console.log('' +
+        'user connected to server');
     socket.on('message', function() {
         var data = ['I am in office', 'I left from office', 'I left office yesterday', 'In the office', 'Ckeckout office','Log out'];
         socket.emit('server ready', data);

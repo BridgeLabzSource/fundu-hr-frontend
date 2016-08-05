@@ -1,4 +1,4 @@
-var $scope;
+var $scop
 angular.module('attendanceApp').directive('ngEnter', function () {
 
     return function ($scope, element, attrs) {

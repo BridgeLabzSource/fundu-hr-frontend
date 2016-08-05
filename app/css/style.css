@@ -59,6 +59,8 @@
     color: #000000;
     background: rgba(0, 0, 0, 0.4);
     padding-bottom: 30px;
+    width:400px;
+    height: 400px;
 }
 
 .register input {
@@ -217,4 +219,17 @@ th{
 .k{
     font-size: 15px;
     transform: translate(0,25%);
+}
+
+@media only screen and (max-width: 480px) {
+    .logo{
+        margin-top:-110px;
+    }
+    #log{
+        width: 300px;
+        background: rgba(0, 0, 0, 0.0);
+    }
+    .inputMob span{
+        margin-left:-120px;
+    }
 }
