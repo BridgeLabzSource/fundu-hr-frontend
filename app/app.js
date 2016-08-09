@@ -3,11 +3,14 @@
  * @param {string} ngApp - parameter refers to the HTML element in which app will run
  * @param {Array} injector - loading modules through injector
  * */
-angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog'])
+angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','satellizer'])
 
 /** configure existing services */
-    .config(function ($stateProvider, $urlRouterProvider, $httpProvider) {
+    .config(function ($stateProvider, $urlRouterProvider, $httpProvider,$authProvider) {
 
+        $httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.withCredentials = false;
+        $authProvider.loginUrl = 'http://54.86.64.100:3000/api/v3/auth/user';
         /**
          * @default Login
          */
@@ -22,7 +25,15 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog'])
                 controller: 'loginCtrl',
                 onEnter: function () {
                     // console.log('login');
+                },
+                resolve:{
+                    skipIfLoggedIn : skipIfLoggedIn
                 }
+            })
+
+            .state('Logout',{
+                url:'/logout',
+                controller: 'attendanceCtrl'
             })
 
             /** Registration state */
@@ -52,6 +63,9 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog'])
                 controller: 'attendanceCtrl',
                 onEnter: function () {
                     // console.log('Time Entry Message');
+                },
+                resolve: {
+                    loginRequired : loginRequired
                 }
             })
             .state('home.timeEntry', {
@@ -62,6 +76,30 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog'])
                     // console.log('Time entry confirmation');
                 }
             });
+
+        function skipIfLoggedIn($q,$auth){
+            var deferred = $q.defer();
+            if($auth.isAuthenticated()){
+                deferred.reject();
+                console.log('already logged in');
+            }
+            else{
+                console.log('login require');
+                deferred.resolve();
+            }
+            return deferred.promise;
+        }
+
+        function loginRequired($q,$location,$auth){
+            var deferred = $q.defer();
+            if($auth.isAuthenticated()){
+                deferred.resolve();
+            }
+            else{
+                $location.path('/Login');
+            }
+            return deferred.promise;
+        }
 
         /**
          * pushing interceptor to the array

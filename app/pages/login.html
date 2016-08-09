@@ -1,3 +1,4 @@
+<div ng-controller="loginCtrl as vm">
 <div class="logo center">
     <img src="images/logo-white.png">
 </div>
@@ -14,25 +15,24 @@
                 </div>
                 <label for="pwd" class="sr-only">Password</label>
                 <input id="pwd" type="password" name="pwd" class="form-control" placeholder="Password" ng-model="pwd"
-                           required>
-
+                       required>
             </div>
             <br>
-            <!--<p ng-show="log.mobile.$invalid " class="help-block">Mobile is not valid!!</p>-->
-            <!--<p ng-show="log.pwd.$invalid " class="help-block">Invalid Password!!</p>-->
         </div>
         <label class="pull-right" ng-disabled="log.$invalid">
-            <a ng-click="forget()"><u><small>Forget Password</small></u></a>
+            <a ng-click="forget()"><u>
+                <small>Forget Password</small>
+            </u></a>
         </label>
         <button class="btn btn-lg btn-success btn-block" ng-click="logIn()" ng-disabled="log.$invalid">
             <span ng-hide="dataLoaded">Login</span>
             <span ng-show="dataLoaded"><i class="fa fa-spinner fa-spin"></i>Loading...</span>
-        </button><br>
+        </button>
+        <br>
         <button class="btn btn-lg btn-primary btn-block" ui-sref="registration" id="btn2">
             Sign Up
         </button>
         <br>
-
-        </div>
     </center>
 </form>
+</div>

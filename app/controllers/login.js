@@ -1,7 +1,10 @@
-/** login controller to post the mobile */
+/**
+ * Login controller
+ */
 angular.module('attendanceApp').controller('loginCtrl',submit);
 
-function submit($scope,$state,$http,localStorageService,restService,ngDialog) {
+function submit($scope,$state,$http,localStorageService,restService,ngDialog,$auth,$location) {
+    var vm = this;
 
     $scope.dataLoaded = false;
     $scope.forget = function(){
@@ -12,16 +15,26 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog) {
             $state.go('OTP');
         }
     };
+
+    /**
+     * function to login
+     * */
     $scope.logIn = function () {
 
         var credentials = {
-            mobile: "+91" + $scope.mobile,
-            password : $scope.pwd
+            mobile: "+91" + vm.mobile,
+            password : vm.pwd
         };
+
         localStorageService.set('mobile', credentials.mobile);
-        // console.log(localStorageService.get('mobile'));
         $scope.dataLoaded = true;
         $scope.log.$invalid = true;
+
+        $auth.login(credentials).then(function(data){
+           console.log('token - ',$auth.getToken());
+            alert('logged in');
+            $state.go();
+        });
 
         function cb(data,error) {
             $scope.dataLoaded = false;
@@ -45,7 +58,9 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog) {
                 alert('Server Problem!!');
             }
         }
-
+        /**
+         * REST call to POST login credentials
+         */
         restService.postRequest('registration/login', credentials, cb);
 
     }

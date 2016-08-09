@@ -1,14 +1,25 @@
-angular.module('attendanceApp').service('retrieveService',retrieveService);
+/**
+ * retrieveService - shares data between controllers and directives
+ * */
+angular.module('attendanceApp').service('retrieveService', retrieveService);
 
-function retrieveService(){
+function retrieveService() {
 
     var dataX = {};
 
     return {
-        getDataX : function(){
+        /**
+         * this function get Data
+         * @return {datax}
+         * */
+        getDataX: function () {
             return dataX;
         },
-        setDatax : function(val){
+        /**
+         * this function set Data
+         * @param {val}
+         * */
+        setDatax: function (val) {
             dataX = val.data;
             // console.log('dataXd',dataX);
         }

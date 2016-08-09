@@ -1,3 +1,6 @@
+/**
+ * Attendance controller
+ */
 angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
 
 function submitAttnd($scope, localStorageService, $state, restService, retrieveService,$timeout,ngDialog) {
@@ -6,6 +9,9 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
     $scope.isActive = true;
     $scope.showLog = true;
 
+    /**
+     * function to send message for attendance
+     * */
     $scope.submitMsg = function () {
         if($scope.message.toLowerCase() == "log out"){
             $timeout(function() {
@@ -18,14 +24,16 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                 message: $scope.message
             };
             var dataTime = timeEntryCredentials;
-            // console.log(dataTime);
+
+            /**
+             * REST call to POST message
+             * */
             restService.postRequest('message', dataTime, cb);
 
             function cb(data, error) {
                 $scope.dataLoaded = false;
                 if (data) {
-                    // console.log('data.data - ', data.data);
-                    // console.log('data.err - ', data.err);
+
                     if (data.err) {
                         ngDialog.open({
                             template: "<h3 style='color: #EB444A'>"+data.err+"</h3>",
@@ -58,22 +66,12 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
                 }
                 else {
                     ngDialog.open({
-                        template: "<h3 style='color:sandybrown'>Try again later..</h3>",
+                        template: "<h3 style='color:lightgoldenrodyellow'>Try again later..</h3>",
                         className: 'ngdialog-theme-default',
                         plain: true,
                         overlay: true
                     });
                 }
-
-                // if($scope.message.toLowerCase() == "log >"){
-                //     $timeout(function() {
-                //         $scope.showLog = false;
-                //     }, 1000);
-                // }else if($scope.message.toLowerCase() == "clear"){
-                //     $timeout(function() {
-                //         $scope.showLog = true;
-                //     }, 800);
-                // }
             }
         }
 

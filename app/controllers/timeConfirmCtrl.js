@@ -1,10 +1,14 @@
+/**
+ * timeConfirm Controller - to confirm attendance
+ * */
 angular.module('attendanceApp').controller('timeConfirmCtrl', confirm);
 
 function confirm($scope, restService, $state, localStorageService, DateTime, retrieveService,ngDialog) {
     
     $scope.dataLoaded = false;
     $scope.dataXX = retrieveService.getDataX();
-
+    /**
+     * stores all credentials*/
     var confirmAll = {
         mobile: $scope.dataXX.userId,
         inTime: $scope.dataXX.inTime,
@@ -12,22 +16,8 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
         totalTime: $scope.dataXX.totalTime
     };
 
-    // $scope.disIn = function (e) {
-    //     var hide = true;
-    //     if (confirmAll.outTime == 0) {
-    //         hide = false;
-    //     }
-    //     return hide;
-    // };
-    //
-    // $scope.disOut = function (e) {
-    //     var hide = false;
-    //     if (confirmAll.outTime == 0) {
-    //         hide = true;
-    //     }
-    //     return hide;
-    // };
-    
+    /**
+     * stores only credentials which are expose to user*/
     $scope.resource = {
         data: [{
             Date : DateTime.getDate1(confirmAll.inTime),
@@ -35,15 +25,14 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
             Out: DateTime.getTime1(confirmAll.outTime)
         }]
     };
-
+    /**
+     * confirm time*/
     $scope.confirmTime = function () {
 
         $scope.dataLoaded = true;
         $scope.conf = true;
         $scope.inTimeFinal = DateTime.setDateTime($scope.resource.data[0].Date, $scope.resource.data[0].In);
-        // console.log($scope.inTimeFinal);
         $scope.outTimeFinal = DateTime.setDateTime($scope.resource.data[0].Date, $scope.resource.data[0].Out);
-        // console.log($scope.outTimeFinal);
 
         var confirmAttdc = {
             mobile: confirmAll.mobile,
@@ -52,7 +41,8 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
             totalTime: confirmAll.totalTime,
             check: "true"
         };
-        // console.log('post - ',confirmAttdc);
+
+        /**REST call for timeEntry confirmation*/
         restService.postRequest('message/timeEntryConform', confirmAttdc, cb);
 
         function cb(data, error) {
@@ -78,7 +68,5 @@ function confirm($scope, restService, $state, localStorageService, DateTime, ret
                 $state.go('home');
             }
         }
-
-        // localStorageService.clearAll();
     }
 }

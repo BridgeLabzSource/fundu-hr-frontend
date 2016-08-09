@@ -1,3 +1,6 @@
+/**
+ * interceptorAt service
+ * */
 angular.module('attendanceApp').factory('interceptorAt',interceptorAt);
 
 function interceptorAt($q){

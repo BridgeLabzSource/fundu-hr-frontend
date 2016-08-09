@@ -1,11 +1,13 @@
+/**
+ * restService - REST call with base URL*/
 angular.module('attendanceApp').service('restService',restService);
 
 function restService($http){
-    //set baseUrl
-    var baseUrl = "https://funduhr-backend.herokuapp.com/";
-    // var baseUrl = "http://localhost:3009/";
 
-    //getRequest function
+    var baseUrl = "https://funduhr-backend.herokuapp.com/";
+
+    /**
+     * function for GET */
     this.getRequest = function (path,query,cb){
 
         var getR = $http.get(baseUrl + path,query).success(function(data){
@@ -16,7 +18,8 @@ function restService($http){
         return getR;
     };
 
-    //postRequest function
+    /**
+     * function to POST*/
     this.postRequest = function(path,data,cb){
 
         var postR = $http.post(baseUrl+path,data).success(function(data){

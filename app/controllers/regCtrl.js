@@ -1,7 +1,12 @@
+/**
+ * Registration controller
+ * */
 angular.module('attendanceApp').controller('regCtrl',function($state,$scope,$http,localStorageService,restService,ngDialog) {
 
     $scope.dataLoaded = false;
 
+    /**
+     * function register the user*/
     $scope.register = function () {
         var regData = {
             mobile : '+91'+$scope.mobile,
@@ -34,6 +39,7 @@ angular.module('attendanceApp').controller('regCtrl',function($state,$scope,$htt
                 }
             }
         }
+        /**REST call to POST registration credentials*/
         restService.postRequest('registration', regData, cb);
     };
 });
