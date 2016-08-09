@@ -226,7 +226,7 @@ th{
     .logo{
         margin-top:-110px;
     }
-    #log,.form-otp{
+    #log{
         width: 300px;
         background: rgba(0, 0, 0, 0.0);
         margin-top:-100px;
@@ -243,16 +243,31 @@ th{
         padding-top: 5px;
         padding-bottom: 0px;
     }
+    .form-otp {
+        width: 300px;
+        background: rgba(0, 0, 0, 0.0);
+        margin-top:-100px;
+        padding-top: 5px;
+        padding-bottom: 0px;
+    }
 }
 @media only screen and (min-width: 480px) and (max-width: 767px) {
     .logo{
         margin-top:-110px;
     }
-    #log,.form-otp,#reg{
+    #log{
         width: 300px;
         background: rgba(0, 0, 0, 0.0);
     }
     .inputMob span{
         margin-left:-120px;
+    }
+    #reg {
+        width: 300px;
+        background: rgba(0, 0, 0, 0.0);
+    }
+    .form-otp{
+        width: 300px;
+        background: rgba(0, 0, 0, 0.0);
     }
 }
