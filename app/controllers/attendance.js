@@ -3,7 +3,7 @@
  */
 angular.module('attendanceApp').controller('attendanceCtrl', submitAttnd);
 
-function submitAttnd($scope, localStorageService, $state, restService, retrieveService,$timeout,ngDialog) {
+function submitAttnd($scope, localStorageService, $state, restService, retrieveService,$timeout,ngDialog,$auth,$location) {
 
     $scope.dataLoaded = false;
     $scope.isActive = true;
@@ -14,6 +14,13 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
      * */
     $scope.submitMsg = function () {
         if($scope.message.toLowerCase() == "log out"){
+            // if(!$auth.isAuthenticated()) {
+            //     return;
+            // }
+            // $auth.logout().then(function(){
+            //     alert('logout');
+            //     $location.path('/Login');
+            // });
             $timeout(function() {
                 $state.go('Login');
             }, 500);

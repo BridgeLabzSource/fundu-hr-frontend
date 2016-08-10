@@ -22,46 +22,50 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
     $scope.logIn = function () {
 
         var credentials = {
-            mobile: "+91" + vm.mobile,
-            password : vm.pwd
+            mobile: "+91" + $scope.mobile,
+            password : $scope.pwd
         };
 
         localStorageService.set('mobile', credentials.mobile);
         $scope.dataLoaded = true;
         $scope.log.$invalid = true;
 
-        $auth.login(credentials).then(function(data){
-           console.log('token - ',$auth.getToken());
-            alert('logged in');
-            $state.go();
-        });
-
-        function cb(data,error) {
-            $scope.dataLoaded = false;
-            $scope.log.$invalid = false;
-            // console.log(data);
-            if(data != null) {
-                if (data.err) {
-                    alert(data.err);
-                    $state.go('Login');
+        // $auth.login(credentials).then(function(data){
+        //    console.log('token - ',$auth.getToken());
+        //     console.log('login data - ',data);
+        //     alert('logged in');
+            function cb(data,error) {
+                $scope.dataLoaded = false;
+                $scope.log.$invalid = false;
+                // console.log(data);
+                if(data != null) {
+                    if (data.err) {
+                        alert(data.err);
+                        $state.go('Login');
+                    }
+                    else {
+                        $state.go('home',{});
+                        ngDialog.open({
+                            template: '<h1>Welcome to BridgeLabz!!</h1>',
+                            className: 'ngdialog-theme-default',
+                            plain: true,
+                            overlay: true
+                        });
+                    }
+                }else{
+                    alert('Server Problem!!');
                 }
-                else {
-                    $state.go('home');
-                    ngDialog.open({
-                        template: '<h1>Welcome to BridgeLabz!!</h1>',
-                        className: 'ngdialog-theme-default',
-                        plain: true,
-                        overlay: true
-                    });
-                }
-            }else{
-                alert('Server Problem!!');
             }
-        }
-        /**
-         * REST call to POST login credentials
-         */
-        restService.postRequest('registration/login', credentials, cb);
+            /**
+             * REST call to POST login credentials
+             */
+            restService.postRequest('registration/login', credentials, cb);
+        // }).catch(function(error){
+        //     vm.error = error;
+        //     alert('Cannot Login!');
+        // })
+
+
 
     }
 }

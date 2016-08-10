@@ -8,9 +8,9 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
 /** configure existing services */
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider,$authProvider) {
 
-        $httpProvider.defaults.useXDomain = true;
-        $httpProvider.defaults.withCredentials = false;
-        $authProvider.loginUrl = 'http://54.86.64.100:3000/api/v3/auth/user';
+        // $httpProvider.defaults.useXDomain = true;
+        // $httpProvider.defaults.withCredentials = false;
+        // $authProvider.loginUrl = 'http://54.86.64.100:3000/api/v3/auth/user';
         /**
          * @default Login
          */
@@ -26,9 +26,9 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
                 onEnter: function () {
                     // console.log('login');
                 },
-                resolve:{
-                    skipIfLoggedIn : skipIfLoggedIn
-                }
+                // resolve:{
+                //     skipIfLoggedIn : skipIfLoggedIn
+                // }
             })
 
             .state('Logout',{
@@ -64,9 +64,9 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
                 onEnter: function () {
                     // console.log('Time Entry Message');
                 },
-                resolve: {
-                    loginRequired : loginRequired
-                }
+                // resolve: {
+                //     loginRequired : loginRequired
+                // }
             })
             .state('home.timeEntry', {
                 url: '/',
@@ -76,30 +76,30 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
                     // console.log('Time entry confirmation');
                 }
             });
-
-        function skipIfLoggedIn($q,$auth){
-            var deferred = $q.defer();
-            if($auth.isAuthenticated()){
-                deferred.reject();
-                console.log('already logged in');
-            }
-            else{
-                console.log('login require');
-                deferred.resolve();
-            }
-            return deferred.promise;
-        }
-
-        function loginRequired($q,$location,$auth){
-            var deferred = $q.defer();
-            if($auth.isAuthenticated()){
-                deferred.resolve();
-            }
-            else{
-                $location.path('/Login');
-            }
-            return deferred.promise;
-        }
+        //
+        // function skipIfLoggedIn($q,$auth){
+        //     var deferred = $q.defer();
+        //     if($auth.isAuthenticated()){
+        //         deferred.reject();
+        //         console.log('already logged in');
+        //     }
+        //     else{
+        //         console.log('login require');
+        //         deferred.resolve();
+        //     }
+        //     return deferred.promise;
+        // }
+        //
+        // function loginRequired($q,$location,$auth){
+        //     var deferred = $q.defer();
+        //     if($auth.isAuthenticated()){
+        //         deferred.resolve();
+        //     }
+        //     else{
+        //         $location.path('/Login');
+        //     }
+        //     return deferred.promise;
+        // }
 
         /**
          * pushing interceptor to the array
