@@ -61,7 +61,7 @@
     background: rgba(0, 0, 0, 0.4);
     padding-bottom: 30px;
     width:400px;
-    height: 400px;
+    height: 450px;
 }
 
 .register input {
@@ -77,6 +77,10 @@
     padding: 6px;
     margin-top: 10px;
     background-position: center;
+}
+.btn-github{
+    background-color: #0f0f0f;
+    color:white;
 }
 
 #reg {

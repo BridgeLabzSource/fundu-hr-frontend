@@ -8,9 +8,9 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
 /** configure existing services */
     .config(function ($stateProvider, $urlRouterProvider, $httpProvider,$authProvider) {
 
-        // $httpProvider.defaults.useXDomain = true;
-        // $httpProvider.defaults.withCredentials = false;
-        // $authProvider.loginUrl = 'http://54.86.64.100:3000/api/v3/auth/user';
+        $httpProvider.defaults.useXDomain = true;
+        $httpProvider.defaults.withCredentials = false;
+        $authProvider.loginUrl = 'http://funduhr-backend.herokuapp.com/auth/verify';
         /**
          * @default Login
          */
@@ -24,14 +24,14 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
                 templateUrl: 'pages/login.html',
                 controller: 'loginCtrl',
                 onEnter: function () {
-                    // console.log('login');
+                    console.log('login called');
                 },
-                // resolve:{
-                //     skipIfLoggedIn : skipIfLoggedIn
-                // }
+                resolve: {
+                    skipIfLoggedIn: skipIfLoggedIn
+                }
             })
 
-            .state('Logout',{
+            .state('logout',{
                 url:'/logout',
                 controller: 'attendanceCtrl'
             })
@@ -62,11 +62,11 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
                 templateUrl: 'pages/attendance.html',
                 controller: 'attendanceCtrl',
                 onEnter: function () {
-                    // console.log('Time Entry Message');
+                    console.log('Time Entry Message');
                 },
-                // resolve: {
-                //     loginRequired : loginRequired
-                // }
+                resolve:{
+                    loginRequired:loginRequired // loginRequired function will check for token.
+                }
             })
             .state('home.timeEntry', {
                 url: '/',
@@ -76,30 +76,38 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
                     // console.log('Time entry confirmation');
                 }
             });
-        //
-        // function skipIfLoggedIn($q,$auth){
-        //     var deferred = $q.defer();
-        //     if($auth.isAuthenticated()){
-        //         deferred.reject();
-        //         console.log('already logged in');
-        //     }
-        //     else{
-        //         console.log('login require');
-        //         deferred.resolve();
-        //     }
-        //     return deferred.promise;
-        // }
-        //
-        // function loginRequired($q,$location,$auth){
-        //     var deferred = $q.defer();
-        //     if($auth.isAuthenticated()){
-        //         deferred.resolve();
-        //     }
-        //     else{
-        //         $location.path('/Login');
-        //     }
-        //     return deferred.promise;
-        // }
+
+        $authProvider.github({
+            url:'https://funduhr-backend.herokuapp.com/auth/github',
+            clientId: '24c05ec2fcd5de72a78f',
+            // redirectUri :'http://localhost:3000/#/home'
+            redirectUri :'http://funduhr-frontend.herokuapp.com/#/home'
+        });
+
+
+        function skipIfLoggedIn($q, $auth) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) {
+                console.log('skipping auth true');
+                deferred.reject();
+
+            } else {
+                console.log('auth failed');
+                deferred.resolve();
+            }
+            return deferred.promise;
+        }//end of function
+        
+        function loginRequired($q, $state, $auth) {
+            var deferred = $q.defer();
+            if ($auth.isAuthenticated()) {
+                deferred.resolve();
+            } else {
+                $state.go('Login');
+            }
+            return deferred.promise;
+        }//end of function
+
 
         /**
          * pushing interceptor to the array

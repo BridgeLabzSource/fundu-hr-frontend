@@ -14,16 +14,14 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
      * */
     $scope.submitMsg = function () {
         if($scope.message.toLowerCase() == "log out"){
-            // if(!$auth.isAuthenticated()) {
-            //     return;
-            // }
-            // $auth.logout().then(function(){
-            //     alert('logout');
-            //     $location.path('/Login');
-            // });
             $timeout(function() {
-                $state.go('Login');
-            }, 500);
+                if (!$auth.isAuthenticated()) { return; }
+                $auth.logout()
+                    .then(function() {
+                        alert("LogOut");
+                        $state.go('Login');
+                    });
+            }, 200);
         }else {
             $scope.dataLoaded = true;
             var timeEntryCredentials = {
@@ -39,6 +37,7 @@ function submitAttnd($scope, localStorageService, $state, restService, retrieveS
 
             function cb(data, error) {
                 $scope.dataLoaded = false;
+                console.log('data - ',data);
                 if (data) {
 
                     if (data.err) {

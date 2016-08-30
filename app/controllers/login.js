@@ -4,7 +4,7 @@
 angular.module('attendanceApp').controller('loginCtrl',submit);
 
 function submit($scope,$state,$http,localStorageService,restService,ngDialog,$auth,$location) {
-    var vm = this;
+
 
     $scope.dataLoaded = false;
     $scope.forget = function(){
@@ -26,46 +26,75 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
             password : $scope.pwd
         };
 
-        localStorageService.set('mobile', credentials.mobile);
-        $scope.dataLoaded = true;
-        $scope.log.$invalid = true;
+            localStorageService.set('mobile', credentials.mobile);
+            $scope.dataLoaded = true;
+            $scope.log.$invalid = true;
 
-        // $auth.login(credentials).then(function(data){
-        //    console.log('token - ',$auth.getToken());
-        //     console.log('login data - ',data);
-        //     alert('logged in');
-            function cb(data,error) {
-                $scope.dataLoaded = false;
-                $scope.log.$invalid = false;
-                // console.log(data);
-                if(data != null) {
-                    if (data.err) {
-                        alert(data.err);
-                        $state.go('Login');
-                    }
-                    else {
-                        $state.go('home',{});
-                        ngDialog.open({
-                            template: '<h1>Welcome to BridgeLabz!!</h1>',
-                            className: 'ngdialog-theme-default',
-                            plain: true,
-                            overlay: true
-                        });
-                    }
-                }else{
-                    alert('Server Problem!!');
+
+        $auth.login(credentials)
+            .then(function(data) {
+                console.log($auth.getToken());
+                console.log(data);
+                console.log('You have successfully signed in!');
+                $state.go('home',{});
+            })
+            .catch(function(error) {
+                console.log(error.data.message, error.status);
+            });
+
+
+            // function cb(data,error) {
+            //     $scope.dataLoaded = false;
+            //     $scope.log.$invalid = false;
+            //     // console.log(data);
+            //     if(data != null) {
+            //         if (data.err) {
+            //             alert(data.err);
+            //             $state.go('Login');
+            //         }
+            //         else {
+            //             $state.go('home',{});
+            //             ngDialog.open({
+            //                 template: '<h1>Welcome to BridgeLabz!!</h1>',
+            //                 className: 'ngdialog-theme-default',
+            //                 plain: true,
+            //                 overlay: true
+            //             });
+            //         }
+            //     }else{
+            //         alert('Server Problem!!');
+            //     }
+            // }
+            // /**
+            //  * REST call to POST login credentials
+            //  */
+            // restService.postRequest('registration/login', credentials, cb);
+
+    };
+    //This is a function to authenticate user using social media sites like facebook,twitter,github etc
+    $scope.authenticate = function (provider) {
+        console.log("github Login");
+        console.log(provider);
+        $auth.authenticate(provider)
+            .then(function () {
+                console.log("logged innn");
+                //If authenticated then goto dashboard
+                $state.go('home',{});
+            })
+            .catch(function (error) {
+                console.log('error ',error);
+                if (error.error) {
+
+                    // Popup error - invalid redirect_uri, pressed cancel button, etc.
+                    alert("invalid redirected uri");
+                    console.log("client error ");
+                } else if (error.data) {
+                    // HTTP response error from server
+                    alert("server error");
+                } else {
+                    alert("another server error")
                 }
-            }
-            /**
-             * REST call to POST login credentials
-             */
-            restService.postRequest('registration/login', credentials, cb);
-        // }).catch(function(error){
-        //     vm.error = error;
-        //     alert('Cannot Login!');
-        // })
+            });
+    };
 
-
-
-    }
 }
