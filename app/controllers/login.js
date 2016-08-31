@@ -23,19 +23,23 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
 
         var credentials = {
             mobile: "+91" + $scope.mobile,
-            password : $scope.pwd
+            password : $scope.pwd,
+            token : localStorageService.get('token')
         };
 
-            localStorageService.set('mobile', credentials.mobile);
-            $scope.dataLoaded = true;
-            $scope.log.$invalid = true;
-
+        var token = {'token':localStorageService.get('token')};
+        localStorageService.set('mobile', credentials.mobile);
+        $scope.dataLoaded = true;
+        $scope.log.$invalid = true;
 
         $auth.login(credentials)
             .then(function(data) {
-                console.log($auth.getToken());
-                console.log(data);
+                // console.log($auth.getToken());
+                $scope.dataLoaded = false;
+                $scope.log.$invalid = false;
+                console.log('login',data);
                 console.log('You have successfully signed in!');
+                $auth.isAuthenticated = true;
                 $state.go('home',{});
             })
             .catch(function(error) {
@@ -71,12 +75,15 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
             // restService.postRequest('registration/login', credentials, cb);
 
     };
+
     //This is a function to authenticate user using social media sites like facebook,twitter,github etc
     $scope.authenticate = function (provider) {
         console.log("github Login");
         console.log(provider);
         $auth.authenticate(provider)
-            .then(function () {
+            .then(function (data) {
+                console.log("git log - ",data.data.token);
+                $auth.setToken(data.data.token);
                 console.log("logged innn");
                 //If authenticated then goto dashboard
                 $state.go('home',{});

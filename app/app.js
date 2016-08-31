@@ -14,7 +14,7 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
         /**
          * @default Login
          */
-        $urlRouterProvider.otherwise('/Login');
+        $urlRouterProvider.otherwise('/home');
 
         /** @define states */
         $stateProvider
@@ -80,17 +80,21 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
         $authProvider.github({
             url:'https://funduhr-backend.herokuapp.com/auth/github',
             clientId: '24c05ec2fcd5de72a78f',
-            // redirectUri :'http://localhost:3000/#/home'
             redirectUri :'http://funduhr-frontend.herokuapp.com/#/home'
         });
 
 
-        function skipIfLoggedIn($q, $auth) {
+        function skipIfLoggedIn($q, $auth,ngDialog) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) {
                 console.log('skipping auth true');
+                ngDialog.open({
+                    template: "<h3 style='color: #4CBD50'>You are already logged in!!</h3>",
+                    className: 'ngdialog-theme-default',
+                    plain: true,
+                    overlay: true
+                });
                 deferred.reject();
-
             } else {
                 console.log('auth failed');
                 deferred.resolve();
@@ -98,12 +102,12 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
             return deferred.promise;
         }//end of function
         
-        function loginRequired($q, $state, $auth) {
+        function loginRequired($q, $location, $auth) {
             var deferred = $q.defer();
             if ($auth.isAuthenticated()) {
                 deferred.resolve();
             } else {
-                $state.go('Login');
+                $location.path('/Login');
             }
             return deferred.promise;
         }//end of function

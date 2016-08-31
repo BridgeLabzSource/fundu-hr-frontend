@@ -9,14 +9,14 @@ function retrieveService() {
 
     return {
         /**
-         * this function get Data
+         * this function returns the dataX
          * @return {datax}
          * */
         getDataX: function () {
             return dataX;
         },
         /**
-         * this function set Data
+         * this function set the value to the dataX
          * @param {val}
          * */
         setDatax: function (val) {

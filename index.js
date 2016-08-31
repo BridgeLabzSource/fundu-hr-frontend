@@ -5,7 +5,7 @@ var express = require('express')
     ,app = express()
     ,http = require('http').Server(app)
     ,io = require('socket.io')(http)
-    ,port = process.env.PORT||3000
+    ,port = process.env.PORT||4000
     ,bodyParser = require('body-parser');
 
 /** 
