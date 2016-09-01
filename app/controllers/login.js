@@ -84,7 +84,7 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
             .then(function (data) {
                 console.log("git data - ",data);
                 console.log("git log - ",data.data.token);
-                $auth.setToken(data.data.token);
+                $auth.setToken(data);
                 console.log("logged innn");
                 //If authenticated then goto dashboard
                 $state.go('home',{});
