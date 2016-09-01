@@ -39,7 +39,7 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
                 $scope.log.$invalid = false;
                 console.log('login',data);
                 console.log('You have successfully signed in!');
-                $auth.isAuthenticated = true;
+                alert($auth.isAuthenticated());
                 $state.go('home',{});
             })
             .catch(function(error) {
