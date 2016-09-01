@@ -24,7 +24,7 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
         var credentials = {
             mobile: "+91" + $scope.mobile,
             password : $scope.pwd,
-            token : $auth.getToken()
+            token : localStorageService.get('satellizer_token')
         };
 
         // var token = {'token':localStorageService.get('token')};
@@ -86,6 +86,7 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
                 $auth.setToken(data);
                 console.log("logged innn");
                 console.log("git log - ",$auth.getToken());
+                localStorageService.set('satellizer_token',$auth.getToken());
                 //If authenticated then goto dashboard
                 $state.go('home',{});
             })
