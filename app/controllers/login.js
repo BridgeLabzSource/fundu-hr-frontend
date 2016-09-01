@@ -34,6 +34,7 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
 
         $auth.login(credentials)
             .then(function(data) {
+                $auth.isAuthenticated = true;
                 console.log(data);
                 $scope.dataLoaded = false;
                 $scope.log.$invalid = false;
