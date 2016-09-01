@@ -34,13 +34,13 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
 
         $auth.login(credentials)
             .then(function(data) {
-                $auth.isAuthenticated = true;
+                $auth.isAuthenticated(true);
                 console.log(data);
                 $scope.dataLoaded = false;
                 $scope.log.$invalid = false;
                 console.log('login',data);
                 console.log('You have successfully signed in!');
-                console.log('authenticated - ',$auth.isAuthenticated());
+                console.log('authentication - ',$auth.isAuthenticated());
                 $state.go('home',{});
             })
             .catch(function(error) {
