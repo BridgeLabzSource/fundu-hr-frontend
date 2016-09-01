@@ -64,9 +64,9 @@ angular.module('attendanceApp', ['ui.router', 'LocalStorageModule','ngDialog','s
                 onEnter: function () {
                     console.log('Time Entry Message');
                 },
-                // resolve:{
-                //     loginRequired:loginRequired // loginRequired function will check for token.
-                // }
+                resolve:{
+                    loginRequired:loginRequired // loginRequired function will check for token.
+                }
             })
             .state('home.timeEntry', {
                 url: '/',
