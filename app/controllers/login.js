@@ -24,17 +24,17 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
         var credentials = {
             mobile: "+91" + $scope.mobile,
             password : $scope.pwd,
-            token : localStorageService.get('token')
+
         };
 
-        var token = {'token':localStorageService.get('token')};
+        // var token = {'token':localStorageService.get('token')};
         localStorageService.set('mobile', credentials.mobile);
         $scope.dataLoaded = true;
         $scope.log.$invalid = true;
 
         $auth.login(credentials)
             .then(function(data) {
-                // console.log($auth.getToken());
+                console.log(data);
                 $scope.dataLoaded = false;
                 $scope.log.$invalid = false;
                 console.log('login',data);
