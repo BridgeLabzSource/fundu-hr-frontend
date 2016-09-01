@@ -82,6 +82,7 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
         console.log(provider);
         $auth.authenticate(provider)
             .then(function (data) {
+                console.log("git data - ",data);
                 console.log("git log - ",data.data.token);
                 $auth.setToken(data.data.token);
                 console.log("logged innn");
