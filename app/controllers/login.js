@@ -24,7 +24,7 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
         var credentials = {
             mobile: "+91" + $scope.mobile,
             password : $scope.pwd,
-
+            token : $auth.getToken()
         };
 
         // var token = {'token':localStorageService.get('token')};
