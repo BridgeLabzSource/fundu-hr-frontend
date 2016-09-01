@@ -86,7 +86,8 @@ function submit($scope,$state,$http,localStorageService,restService,ngDialog,$au
                 $auth.setToken(data);
                 console.log("logged innn");
                 console.log("git log - ",$auth.getToken());
-                localStorageService.set('satellizer_token',$auth.getToken());
+                var token = $auth.getToken();
+                localStorageService.set('satellizer_token',token );
                 //If authenticated then goto dashboard
                 $state.go('home',{});
             })
